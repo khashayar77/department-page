@@ -1,0 +1,118 @@
+<div fxLayout="row" fxLayoutAlign="space-around stretch" dir="rtl">
+  <form [formGroup]="filterForm">
+    <div mat-dialog-content class="filter__form">
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="IdFilter" placeholder="کد اشتراک">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="NumberFilter" placeholder="شماره تماس">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="DepartmentFilter" placeholder="دپارتمان">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="AddDateFilter" placeholder="تاریخ ورود اطلاعات">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select formControlName="CallStatusFilter" multiple placeholder="وضعیت تماس">
+            <mat-option *ngFor="let status of callStatusList" [value]="status">{{status}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <button type="submit" (click)="search()" mat-raised-button>{{'Search' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <!-- Customer_ID Column -->
+    <ng-container matColumnDef="Customer_ID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'Customer_ID' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Customer_ID}} </td>
+    </ng-container>
+
+    <!-- Number Column -->
+    <ng-container matColumnDef="Number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Number' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Number}} </td>
+    </ng-container>
+
+    <!-- Department Column -->
+    <ng-container matColumnDef="Department">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Department' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Department}} </td>
+    </ng-container>
+
+    <!-- URL_ID Column -->
+    <ng-container matColumnDef="URL_ID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'URL_ID'| translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.URL_ID}} </td>
+    </ng-container>
+
+    <!-- Add_Date Column -->
+    <ng-container matColumnDef="Add_Date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Add_Date' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Add_Date | date: 'y/M/d'}} </td>
+    </ng-container>
+    <!-- Retry_Time Column -->
+    <ng-container matColumnDef="Retry_Time">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Retry_Time' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Retry_Time}} </td>
+    </ng-container>
+    <!-- Lock_Call Column -->
+    <ng-container matColumnDef="Lock_Call">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Lock_Call'| translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Lock_Call}} </td>
+    </ng-container>
+    <!-- Attempt Column -->
+    <ng-container matColumnDef="Attempt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Attempt' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Attempt}} </td>
+    </ng-container>
+    <!-- Call_Status Column -->
+    <ng-container matColumnDef="Call_Status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Call_Status'|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Call_Status}} </td>
+    </ng-container>
+
+    <!-- Call_Duration Column -->
+    <ng-container matColumnDef="Call_Duration">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Call_Duration' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Call_Duration}} </td>
+    </ng-container>
+    <!-- Info1 Column -->
+    <ng-container matColumnDef="Info1">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Info1' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Info1}} </td>
+    </ng-container>
+    <!-- action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> {{'action' | translate}} </th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="remove(element)"  mat-icon-button
+        matTooltip="حذف"
+          aria-label="Example icon-button with a delete icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+</div>

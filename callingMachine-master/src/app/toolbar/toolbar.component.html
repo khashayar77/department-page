@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+    <button mat-button routerLink="/dashboard" routerLinkActive="router-link-active">{{'Dashboard'|translate}}</button>
+    <button mat-button routerLink="/callingLists" routerLinkActive="router-link-active">{{'Calling Lists'|translate}}</button>
+    <button mat-button routerLink="/departments" routerLinkActive="router-link-active">{{'Departments'|translate}}</button>
+    <button mat-button routerLink="/uploadList" routerLinkActive="router-link-active">{{'Upload List'|translate}}</button>
+    <button mat-button [routerLink]="['/UpLists']" routerLinkActive="router-link-active" >{{'UpLists' | translate}}</button>
+    <div fxFlex></div>
+    <button mat-icon-button aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="خروج" fxFlex="nogrow" (click)="logout()" routerLinkActive="router-link-active">
+        {{'Logout'|translate}} <mat-icon>account_circle</mat-icon>
+    </button>
+</mat-toolbar>
+<router-outlet></router-outlet>
+
