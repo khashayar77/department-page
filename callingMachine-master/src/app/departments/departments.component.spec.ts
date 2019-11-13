@@ -1,10 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DepartmentsComponent } from './departments.component';
-import { MatIconModule, MatTableModule } from '@angular/material';
+import { MatIconModule, MatTableModule, MatSnackBarModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('DepartmentsComponent', () => {
 	let component: DepartmentsComponent;
@@ -19,7 +20,9 @@ describe('DepartmentsComponent', () => {
 					TranslateModule,
 					RouterTestingModule,
 					TranslateModule.forRoot(),
-					RouterModule
+					RouterModule,
+					HttpClientModule,
+					MatSnackBarModule
 				],
 				declarations: [ DepartmentsComponent ]
 			}).compileComponents();

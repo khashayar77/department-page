@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UplaodListComponent } from './uplaod-list.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FileUploadModule } from 'ng2-file-upload';
-import { MatFormFieldModule, MatCardModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatCardModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,7 +21,8 @@ describe('UplaodListComponent', () => {
 					ReactiveFormsModule,
 					MatCardModule,
 					MatInputModule,
-					BrowserAnimationsModule
+					BrowserAnimationsModule,
+					MatSnackBarModule
 				],
 				declarations: [ UplaodListComponent ]
 			}).compileComponents();

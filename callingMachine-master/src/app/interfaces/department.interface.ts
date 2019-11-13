@@ -1,4 +1,5 @@
 export interface Department {
+	enable: number;
 	info: string;
 	id: number;
 	priority: number;
@@ -10,4 +11,5 @@ export interface Department {
 	query_method: string;
 	call_more: number;
 	retry_time: number;
+	url_id: string;
 }

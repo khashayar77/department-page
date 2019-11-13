@@ -15,10 +15,10 @@ export class CallRequestServiceMockInterceptor implements HttpInterceptor {
 			return of(new HttpResponse({ status: 200, body: CallRequsetResponse, url: request.url }));
 		}
 		// tslint:disable-next-line: triple-equals
-		if (request.url.includes('/callrequests/') && request.method.toLowerCase() == 'delete') {
+		if (request.url.includes('/callrequests/') && request.method.toLocaleLowerCase() == 'get') {
 			// tslint:disable-next-line: no-debugger
 			debugger;
-			return of(new HttpResponse({ status: 200, url: request.url }));
+			return of(new HttpResponse({ status: 200, body: { Result: CallRequsetResponse }, url: request.url }));
 		} else {
 			return next.handle(request);
 		}

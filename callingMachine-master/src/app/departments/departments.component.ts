@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
 import { DepartmentService } from '../services/department.service';
 import { Department } from '../interfaces/department.interface';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { formatPercent } from '@angular/common';
+import { MatSnackBar } from '@angular/material';
+import { element } from 'protractor';
 
 // import { DepartmentService } from '../services/department.service';
 @Component({
@@ -35,9 +38,25 @@ export class DepartmentsComponent implements OnInit {
 	paginator: MatPaginator;
 
 	// tslint:disable-next-line: no-shadowed-variable
-	constructor(private DepartmentService: DepartmentService) {
+
+	formGroup: FormGroup;
+	constructor(private DepartmentService: DepartmentService, private snackbar: MatSnackBar) {
 		this.DepartmentService.list().subscribe((response) => {
 			this.dataSource.data = response.Result;
+
+			this.formGroup = new FormGroup({
+				id: new FormControl('1', [ Validators.required ]),
+				Unit: new FormControl('1', [ Validators.required ]),
+				info: new FormControl('1', [ Validators.required ]),
+				priority: new FormControl('', [ Validators.required ]),
+				department: new FormControl('', [ Validators.required ]),
+				start_working_time: new FormControl(''),
+				end_working_time: new FormControl(''),
+				queue: new FormControl(''),
+				query_method: new FormControl(''),
+				call_more: new FormControl(''),
+				retry_time: new FormControl('')
+			});
 		});
 
 		// this.DepartmentService.remove({ criteria: {}, pageNo: 0 }).subscribe((response: any) => {
@@ -49,12 +68,13 @@ export class DepartmentsComponent implements OnInit {
 	}
 
 	remove(item: Department) {
-		// tslint:disable-next-line: no-debugger
 		debugger;
 		this.DepartmentService.remove(item.id).subscribe((res) => {
-			// tslint:disable-next-line: no-debugger
 			debugger;
 		});
+
+		this.snackbar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
+		return;
 	}
 
 	onselect(id: number) {
@@ -65,80 +85,3 @@ export class DepartmentsComponent implements OnInit {
 		this.dataSource.paginator = this.paginator;
 	}
 }
-
-// const ELEMENT_DATA: Department[] = [
-// 	{
-// 		info: 'jafarian',
-// 		id: 1,
-// 		priority: 7,
-// 		department: 'qm-pcs',
-// 		Unit: 'cts',
-// 		start_working_time: '8:00:00',
-// 		end_working_time: '17:50:00',
-// 		dialplan_context: 'calling-machine-cmqm1-start',
-// 		queue: 'cmqm1',
-// 		query_method: 'QS1',
-// 		call_more: 1,
-// 		retry_time: 180
-// 	},
-// 	{
-// 		info: 'jafarian',
-// 		id: 1,
-// 		priority: 7,
-// 		department: 'qm-pcs',
-// 		Unit: 'qm',
-// 		start_working_time: '8:00:00',
-// 		end_working_time: '17:50:00',
-// 		// nwd_table_id: 1,
-// 		dialplan_context: 'calling-machine-cmqm1-start',
-// 		queue: 'cmqm1',
-// 		query_method: 'QS1',
-// 		call_more: 1,
-// 		retry_time: 180
-// 	},
-// 	{
-// 		info: 'jafarian',
-// 		id: 2,
-// 		priority: 7,
-// 		department: 'qm-pcs',
-// 		Unit: 'pcs',
-// 		start_working_time: '8:00:00',
-// 		end_working_time: '17:50:00',
-// 		// nwd_table_id: 1,
-// 		dialplan_context: 'calling-machine-cmqm1-start',
-// 		queue: 'cmqm1',
-// 		query_method: 'QS1',
-// 		call_more: 1,
-// 		retry_time: 180
-// 	},
-// 	{
-// 		info: 'jafarian',
-// 		id: 3,
-// 		priority: 7,
-// 		department: 'qm-pcs',
-// 		Unit: 'qm',
-// 		start_working_time: '8:00:00',
-// 		end_working_time: '17:50:00',
-// 		// nwd_table_id: 1,
-// 		dialplan_context: 'calling-machine-cmqm1-start',
-// 		queue: 'cmqm1',
-// 		query_method: 'QS1',
-// 		call_more: 1,
-// 		retry_time: 180
-// 	},
-// 	{
-// 		info: 'jafarian',
-// 		id: 4,
-// 		priority: 7,
-// 		department: 'qm-pcs',
-// 		Unit: 'cts',
-// 		start_working_time: '8:00:00',
-// 		end_working_time: '17:50:00',
-// 		// nwd_table_id: 1,
-// 		dialplan_context: 'calling-machine-cmqm1-start',
-// 		queue: 'cmqm1',
-// 		query_method: 'QS1',
-// 		call_more: 1,
-// 		retry_time: 180
-// 	}
-// ];

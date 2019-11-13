@@ -11,15 +11,19 @@ import { environment } from 'src/environments/environment';
 	providedIn: 'root'
 })
 export class CallingService {
-	constructor(private http: HttpClient) {
-		console.log('sdf');
-	}
+	constructor(private http: HttpClient) {}
 
 	query(
 		data: CallingRequestQueryRequest
 	): Observable<{ Result: CallRequest[]; total_items: number; page_no: number }> {
 		return this.http.get<{ Result: CallRequest[]; total_items: number; page_no: number }>(
 			`${environment.server_ip}/callrequests`
+		);
+	}
+
+	list() {
+		return this.http.get<{ Result: CallRequest[]; total: number; page_no: number }>(
+			`${environment.server_ip}/callreaquests`
 		);
 	}
 

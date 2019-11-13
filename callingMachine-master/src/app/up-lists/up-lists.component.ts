@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
 import { UpLists } from '../interfaces/UpLists';
 import { UplistsService } from '../services/uplists.service';
+import { MatSnackBar } from '@angular/material';
+import { pluck } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
 	selector: 'app-up-lists',
 	templateUrl: './up-lists.component.html',
@@ -12,6 +15,7 @@ import { UplistsService } from '../services/uplists.service';
 export class UpListsComponent implements OnInit {
 	// tslint:disable-next-line: no-use-before-declare
 	dataSource = new MatTableDataSource<UpLists>([]);
+	id: string;
 
 	displayedColumns: string[] = [
 		'ListID',
@@ -34,7 +38,7 @@ export class UpListsComponent implements OnInit {
 	@ViewChild(MatPaginator, { static: true })
 	paginator: MatPaginator;
 
-	constructor(private UpListsService: UplistsService) {
+	constructor(private UpListsService: UplistsService, private snackbar: MatSnackBar, private router: ActivatedRoute) {
 		this.UpListsService.list().subscribe((response) => {
 			this.dataSource.data = response.Result;
 		});
@@ -44,6 +48,12 @@ export class UpListsComponent implements OnInit {
 		debugger;
 		this.UpListsService.remove(item.ID).subscribe((res) => {});
 		debugger;
+		this.snackbar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
+		return;
+	}
+
+	refresh(item: UpLists) {
+		this.UpListsService.refresh(item.ID).subscribe((res) => {});
 	}
 
 	onselect(id: number) {
@@ -55,69 +65,3 @@ export class UpListsComponent implements OnInit {
 		this.dataSource.paginator = this.paginator;
 	}
 }
-
-// const ELEMENT_DATA: UpLists[] = [
-// 	{
-// 		ID: '1',
-// 		AllRecords: '2',
-// 		SuccessRecords: 'qm',
-// 		Date: '2019/10/11',
-// 		actions: 'delete',
-// 		CustomerID: '12',
-// 		department: 'qm',
-// 		add_date: '2019/10/13',
-// 		Last_attempt_date: '2019/10/12',
-// 		lock_call: '2',
-// 		call_status: '3',
-// 		call_duration: '23',
-// 		info: 'jafarian'
-// 	},
-
-// 	{
-// 		ID: '1',
-// 		AllRecords: '2',
-// 		SuccessRecords: 'qm',
-// 		Date: '2019/10/11',
-// 		actions: 'delete',
-// 		CustomerID: '12',
-// 		department: 'qm',
-// 		add_date: '2019/10/13',
-// 		Last_attempt_date: '2019/10/12',
-// 		lock_call: 2,
-// 		call_status: 3,
-// 		call_duration: 23,
-// 		info: 'jafarian'
-// 	},
-
-// 	{
-// 		ID: 1,
-// 		AllRecords: 2,
-// 		SuccessRecords: 'qm',
-// 		Date: '2019/10/11',
-// 		actions: 'delete',
-// 		CustomerID: 12,
-// 		department: 'qm',
-// 		add_date: '2019/10/13',
-// 		Last_attempt_date: '2019/10/12',
-// 		lock_call: 2,
-// 		call_status: 3,
-// 		call_duration: 23,
-// 		info: 'jafarian'
-// 	},
-
-// 	{
-// 		ID: 1,
-// 		AllRecords: 2,
-// 		SuccessRecords: 'qm',
-// 		Date: '2019/10/11',
-// 		actions: 'delete',
-// 		CustomerID: 12,
-// 		department: 'qm',
-// 		add_date: '2019/10/13',
-// 		Last_attempt_date: '2019/10/12',
-// 		lock_call: 2,
-// 		call_status: 3,
-// 		call_duration: 23,
-// 		info: 'jafarian'
-// 	}
-// ];

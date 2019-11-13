@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CallRequest } from '../interfaces/call-request.interface';
-import { MaterialModule } from '../material/material.module';
 import { MatTableDataSource } from '@angular/material';
 import { CallingService } from '../services/calling.service';
-
+import { MatSnackBar } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatDatepicker } from '@angular/material/datepicker';
+export interface Num {
+	value: string;
+	viewValue: string;
+}
 @Component({
 	selector: 'app-calling-lists',
 	templateUrl: './calling-lists.component.html',
@@ -12,8 +18,11 @@ import { CallingService } from '../services/calling.service';
 })
 export class CallingListsComponent {
 	callStatusList: number[] = [ 0, 1 ];
+	num: Num[] = [ { value: '0', viewValue: '0' }, { value: '1', viewValue: '1' }, { value: '2', viewValue: '2' } ];
+	// tslint:disable-next-line: variable-name
 	current_page: number;
 	total: number;
+
 	displayedColumns: string[] = [
 		'Customer_ID',
 		'Number',
@@ -29,8 +38,13 @@ export class CallingListsComponent {
 		'action'
 	];
 	dataSource = new MatTableDataSource<CallRequest>();
+	constructor(
+		private callingService: CallingService,
+		private MatSnackBar: MatSnackBar,
+		private _bottomSheet: MatBottomSheet
+	) {
+		// tslint:disable-next-line: no-unused-expression
 
-	constructor(private callingService: CallingService) {
 		this.current_page = 0;
 		this.search({ page_no: 0 });
 	}
@@ -43,12 +57,19 @@ export class CallingListsComponent {
 		CallStatusFilter: new FormControl()
 	});
 
+	@ViewChild(MatPaginator, { static: true })
+	paginator: MatPaginator;
+
+	ngOnInit() {
+		this.dataSource.paginator = this.paginator;
+	}
+
 	remove(item: CallRequest) {
 		debugger;
 		this.callingService.remove(item.ID).subscribe((res) => {
 			debugger;
-			// this.sb
 		});
+		this.MatSnackBar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
 	}
 
 	search({ page_no } = {} as any) {
@@ -63,10 +84,10 @@ export class CallingListsComponent {
 				this.total = res.total_items;
 			});
 	}
-
-	next_page() {
-		this.search({ page_no: ++this.current_page });
-	}
+	// page_change(e: PageEvent) {
+	//   e.
+	//   this.search({ page_no: ++this.current_page });
+	// }
 
 	get ID() {
 		return this.filterForm.get('IdFilter');
@@ -83,4 +104,5 @@ export class CallingListsComponent {
 	get CallStatus() {
 		return this.filterForm.get('CallStatusFilter');
 	}
+	openBottomSheet() {}
 }

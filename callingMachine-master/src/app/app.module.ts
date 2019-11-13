@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FileUploadModule } from 'ng2-file-upload';
+
 import { MatPaginator } from '@angular/material/paginator';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -30,6 +31,8 @@ import { DepartmentService } from './services/department.service';
 import { MaterialModule } from './material/material.module';
 import { UpListsServiceMockInterceptore } from './mock-interceptors/uplists-service-mock-interceptore';
 import { DepartmentServiceMockInterceptore } from './mock-interceptors/department-service-mock-interceptor';
+import { MatTooltipModule } from '@angular/material';
+
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -46,19 +49,19 @@ export function HttpLoaderFactory(http: HttpClient) {
 		DepartmentDetailComponent,
 		Error404Component,
 		AddDepartmentsComponent,
-    UpListsComponent,
-    MatPaginator
+		UpListsComponent,
+		MatPaginator
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		FormsModule,
 		HttpClientModule,
+		MatTooltipModule,
 		BrowserAnimationsModule,
 		MaterialModule,
 		FlexLayoutModule,
 		ReactiveFormsModule,
-
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,

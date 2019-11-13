@@ -6,7 +6,6 @@
           <input matInput formControlName="IdFilter" placeholder="کد اشتراک">
         </mat-form-field>
       </div>
-
       <div class="form-group">
         <mat-form-field class="example-full-width">
           <input matInput formControlName="NumberFilter" placeholder="شماره تماس">
@@ -14,7 +13,13 @@
       </div>
       <div class="form-group">
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="DepartmentFilter" placeholder="دپارتمان">
+          <mat-label>دپارتمان</mat-label>
+          <mat-select fxFlex="10">
+            <mat-option *ngFor="let num of num" [value]="num.value">
+          <input matInput formControlName="DepartmentFilter"  placeholder="1">
+          {{num.viewValue}}
+        </mat-option>
+        </mat-select>
         </mat-form-field>
       </div>
       <div class="form-group">
@@ -30,7 +35,7 @@
         </mat-form-field>
       </div>
       <div class="form-group">
-        <button type="submit" (click)="search()" mat-raised-button>{{'Search' | translate}}</button>
+        <button type="submit" (click)="search()" color='primary' mat-raised-button>{{'Search' | translate}}</button>
       </div>
     </div>
   </form>
@@ -108,6 +113,7 @@
           aria-label="Example icon-button with a delete icon">
           <mat-icon>delete</mat-icon>
         </button>
+        <button mat-icon-button matTooltip="نمایش جزئیات" (click)="openBottomSheet()"><mat-icon>remove_red_eye</mat-icon></button>
       </td>
     </ng-container>
 
@@ -116,4 +122,5 @@
 
   </table>
 
+  <mat-paginator [pageSizeOptions]="[2, 4, 6]"  fxFill="10"  fxLayout="row" flexLayoutAlign="space-around center"></mat-paginator>
 </div>

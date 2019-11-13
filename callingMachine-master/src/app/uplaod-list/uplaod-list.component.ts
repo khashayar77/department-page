@@ -1,6 +1,8 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FileUploader, FileItem } from 'ng2-file-upload';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { stringify } from 'querystring';
 
 function readBase64(file): Promise<any> {
 	const reader = new FileReader();
@@ -65,7 +67,9 @@ export class UplaodListComponent {
 
 	uploadAll() {
 		if (this.uploader.progress) {
-			alert('فایل آپلود شد');
+			alert('فایل با موفقیت آپلود شد');
 		}
 	}
+
+	constructor(private snackbar: MatSnackBar) {}
 }

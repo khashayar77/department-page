@@ -8,7 +8,7 @@ export interface CallRequest {
 	Retry_Time: number;
 	Lock_Call: number;
 	Attempt: number;
-	Call_Status: number;
+	Call_Status: string;
 	Call_Duration: number;
 	Info1: string;
 }
