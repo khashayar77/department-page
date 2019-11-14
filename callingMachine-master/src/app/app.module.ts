@@ -32,6 +32,8 @@ import { MaterialModule } from './material/material.module';
 import { UpListsServiceMockInterceptore } from './mock-interceptors/uplists-service-mock-interceptore';
 import { DepartmentServiceMockInterceptore } from './mock-interceptors/department-service-mock-interceptor';
 import { MatTooltipModule } from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, MatSliderModule, DateAdapter} from '@angular/material';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -50,7 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 		Error404Component,
 		AddDepartmentsComponent,
 		UpListsComponent,
-		MatPaginator
+    MatPaginator,
+
 	],
 	imports: [
 		BrowserModule,
@@ -61,7 +64,11 @@ export function HttpLoaderFactory(http: HttpClient) {
 		BrowserAnimationsModule,
 		MaterialModule,
 		FlexLayoutModule,
-		ReactiveFormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatSliderModule,
+    MatNativeDateModule,
+
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
@@ -74,7 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 	],
 	providers: [
 		LogedInGuard,
-		DepartmentService,
+    DepartmentService,
 		// {
 		// 	provide: HTTP_INTERCEPTORS,
 		// 	useClass: HttpErrorInterceptor,
