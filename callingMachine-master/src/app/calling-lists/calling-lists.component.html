@@ -15,7 +15,7 @@
         <mat-form-field class="example-full-width">
           <mat-label>دپارتمان</mat-label>
           <mat-select fxFlex="10">
-            <mat-option *ngFor="let num of num" [value]="num.value">
+            <mat-option *ngFor="let num of num" [value]="num.value" dir="rtl">
           <input matInput formControlName="DepartmentFilter"  placeholder="1">
           {{num.viewValue}}
         </mat-option>
