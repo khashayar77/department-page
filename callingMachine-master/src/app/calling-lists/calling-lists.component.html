@@ -23,9 +23,13 @@
         </mat-form-field>
       </div>
       <div class="form-group">
-        <mat-form-field class="example-full-width">
-          <input matInput formControlName="AddDateFilter" placeholder="تاریخ ورود اطلاعات">
-        </mat-form-field>
+          <mat-form-field class="example-full-width">
+              <input matInput  formControlName="AddDateFilter" [matDatepicker]="picker" placeholder="تاریخ ورود اطلاعات">
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field>
