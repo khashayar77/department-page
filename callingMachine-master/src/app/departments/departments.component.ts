@@ -7,7 +7,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { formatPercent } from '@angular/common';
 import { MatSnackBar } from '@angular/material';
 import { element } from 'protractor';
-
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import { MySheetComponent } from '../components/my-sheet/my-sheet.component';
 // import { DepartmentService } from '../services/department.service';
 @Component({
 	selector: 'app-departments',
@@ -40,7 +41,7 @@ export class DepartmentsComponent implements OnInit {
 	// tslint:disable-next-line: no-shadowed-variable
 
 	formGroup: FormGroup;
-	constructor(private DepartmentService: DepartmentService, private snackbar: MatSnackBar) {
+	constructor(private DepartmentService: DepartmentService, private snackbar: MatSnackBar, private buttomSheet: MatBottomSheet ) {
 		this.DepartmentService.list().subscribe((response) => {
 			this.dataSource.data = response.Result;
 
@@ -56,7 +57,8 @@ export class DepartmentsComponent implements OnInit {
 				query_method: new FormControl(''),
 				call_more: new FormControl(''),
 				retry_time: new FormControl('')
-			});
+      });
+
 		});
 
 		// this.DepartmentService.remove({ criteria: {}, pageNo: 0 }).subscribe((response: any) => {
@@ -64,8 +66,15 @@ export class DepartmentsComponent implements OnInit {
 		// 	this.DepartmentService.edit({ criteria: {}, pageNo: 0 }).subscribe((response: any) => {
 		// 		this.dataSource.data = response;
 		// 	});
-		// });
-	}
+    // });
+  }
+
+  openBottomSheet(){
+    this.buttomSheet.open(MySheetComponent);
+  }
+
+
+
 
 	remove(item: Department) {
 		debugger;

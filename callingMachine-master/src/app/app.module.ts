@@ -34,6 +34,7 @@ import { DepartmentServiceMockInterceptore } from './mock-interceptors/departmen
 import { MatTooltipModule } from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatSliderModule, DateAdapter} from '@angular/material';
+import { MySheetComponent } from './components/my-sheet/my-sheet.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -53,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 		AddDepartmentsComponent,
 		UpListsComponent,
     MatPaginator,
+    MySheetComponent,
 
 	],
 	imports: [
@@ -108,7 +110,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 			useClass: DepartmentServiceMockInterceptore,
 			multi: true
 		}
-	],
+  ],
+  entryComponents: [MySheetComponent],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}

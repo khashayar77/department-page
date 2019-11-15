@@ -22,7 +22,7 @@
 	"Calling Lists": "لیست تماس ها",
 	"Upload List": "آپلود فایل",
 	"UpLists": "لیست آپلود ها ",
-	"info": "اطلاعات",
+	"info": "کاربر",
 	"Priority": "اولویت",
 	"Department": "دپارتمان",
 	"start_working_time": "ساعت شروع کار",
@@ -47,5 +47,5 @@
 	"AllRecords": "تعداد کل رکورد ها",
 	"SuccessRecords": "تعداد تماس های موفق",
 	"Last_attempt_date": "تاریخ آخرین تلاش",
-	"Date": "تاریخ"
+  "Date": "تاریخ"
 }
