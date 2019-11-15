@@ -10,7 +10,8 @@ import { MatDatepicker } from '@angular/material/datepicker';
 // import {MatNativeDateModule, MatSliderModule, DateAdapter} from '@angular/material';
 export interface Num {
 	value: string;
-	viewValue: string;
+  viewValue: string;
+
 }
 @Component({
 	selector: 'app-calling-lists',
@@ -18,7 +19,7 @@ export interface Num {
 	styleUrls: [ './calling-lists.component.scss' ]
 })
 export class CallingListsComponent {
-	callStatusList: number[] = [ 0, 1 ];
+  callStatusList: number[] = [ 0, 1 ];
 	num: Num[] = [ { value: '0', viewValue: '0' }, { value: '1', viewValue: '1' }, { value: '2', viewValue: '2' } ];
 	// tslint:disable-next-line: variable-name
 	current_page: number;
