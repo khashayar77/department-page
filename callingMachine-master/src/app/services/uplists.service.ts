@@ -10,6 +10,9 @@ import { map } from 'rxjs/operators';
 	providedIn: 'root'
 })
 export class UplistsService {
+  update(id: string, value: any) {
+    throw new Error("Method not implemented.");
+  }
 	get(id: any) {
 		throw new Error('Method not implemented.');
 	}

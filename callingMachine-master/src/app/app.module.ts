@@ -35,6 +35,7 @@ import { MatTooltipModule } from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatSliderModule, DateAdapter} from '@angular/material';
 import { MySheetComponent } from './components/my-sheet/my-sheet.component';
+import {MySheetUplistsComponent} from './components/my-sheet-uplists/my-sheet-uplists.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -55,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 		UpListsComponent,
     MatPaginator,
     MySheetComponent,
+    MySheetUplistsComponent
 
 	],
 	imports: [
@@ -111,7 +113,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 			multi: true
 		}
   ],
-  entryComponents: [MySheetComponent],
+  entryComponents: [MySheetComponent, MySheetUplistsComponent],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}

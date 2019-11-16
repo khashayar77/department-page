@@ -1,0 +1,114 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="700px">
+      <mat-card-header>
+          <mat-card-title>
+              ویرایش دپارتمان
+              <b>
+                  {{formGroup.get('department').value}}
+              </b>
+          </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <form [formGroup]="formGroup">
+              <div fxLayout="row wrap" class="fields">
+                  <div fxFlex="50">
+                      <!-- <mat-form-field>
+                          <mat-label>فعال</mat-label>
+                          <mat-select fxFlex="10">
+
+                              <mat-option *ngFor="let num of num" [value]="num.value">
+                                  {{num.viewValue}}
+                              </mat-option>
+                          </mat-select>
+                      </mat-form-field> -->
+                  </div>
+
+                  <div fxFlex="50">
+                      <mat-form-field>
+                          <input type="number" matInput placeholder="کد لیست" formControlName="ListID" min="1"
+                              max="20">
+                      </mat-form-field>
+                  </div>
+
+                  <div fxFlex="50">
+                      <mat-form-field>
+                          <input type="time" matInput placeholder="کد اشتراک"
+                              formControlName="CustomerID">
+                      </mat-form-field>
+                  </div>
+
+
+                  <div fxFlex="50">
+                      <mat-form-field>
+                          <input type="time" matInput placeholder="کاربر" formControlName="info">
+                      </mat-form-field>
+                  </div>
+
+
+                  <div fxFlex="50">
+                      <mat-form-field>
+                          <input type="text" matInput placeholder="تعداد کل رکوردها" formControlName="AllRecords">
+                      </mat-form-field>
+                  </div>
+
+
+
+                  <div fxFlex="50">
+                      <mat-form-field>
+                          <input type="text" matInput placeholder="تعداد تماس های موفق" formControlName="SuccessRecords">
+                      </mat-form-field>
+                  </div>
+
+                  <div fxFlex="50">
+                      <mat-form-field>
+                          <input type="number" matInput placeholder="دپارتمان" formControlName="department">
+                      </mat-form-field>
+                  </div>
+
+                  <div fxFlex="50">
+                      <mat-form-field>
+                          <input type="text" matInput placeholder="تاریخ" formControlName="Date">
+                      </mat-form-field>
+                  </div>
+
+                  <div fxFlex="50">
+                      <mat-form-field>
+                          <input type="number" matInput placeholder="افزودن تاریخ" formControlName="add_date"
+                              min="1" max="30">
+                      </mat-form-field>
+                  </div>
+
+                  <div fxFlex="50">
+                      <mat-form-field>
+                          <input type="number" matInput placeholder="تاریخ آخرین تلاش" formControlName="Last_attempt_date">
+                      </mat-form-field>
+                  </div>
+
+
+                  <div fxFlex="50">
+                    <mat-form-field>
+                        <input type="number" matInput placeholder=" lock_call" formControlName="lock_call">
+                    </mat-form-field>
+                </div>
+
+
+                <div fxFlex="50">
+                  <mat-form-field>
+                      <input type="number" matInput placeholder=" وضعیت تماس" formControlName="call_status">
+                  </mat-form-field>
+              </div>
+
+
+              <div fxFlex="50">
+                <mat-form-field>
+                    <input type="number" matInput placeholder="مدت مکالمه" formControlName="call_duration">
+                </mat-form-field>
+            </div>
+              </div>
+          </form>
+      </mat-card-content>
+      <mat-card-actions>
+          <button type="button" (click)="openBottomSheet()" mat-raised-button color="primary">{{'save' | translate}}</button>
+      </mat-card-actions>
+  </mat-card>
+</div>

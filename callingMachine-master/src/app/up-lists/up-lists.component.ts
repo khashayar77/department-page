@@ -6,6 +6,10 @@ import { UplistsService } from '../services/uplists.service';
 import { MatSnackBar } from '@angular/material';
 import { pluck } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MySheetComponent } from '../components/my-sheet/my-sheet.component';
+import { MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet'
+import { MySheetUplistsComponent } from '../components/my-sheet-uplists/my-sheet-uplists.component';
 
 @Component({
 	selector: 'app-up-lists',
@@ -14,7 +18,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UpListsComponent implements OnInit {
 	// tslint:disable-next-line: no-use-before-declare
-	dataSource = new MatTableDataSource<UpLists>([]);
+  dataSource = new MatTableDataSource<UpLists>([]);
 	id: string;
 
 	displayedColumns: string[] = [
@@ -38,11 +42,36 @@ export class UpListsComponent implements OnInit {
 	@ViewChild(MatPaginator, { static: true })
 	paginator: MatPaginator;
 
-	constructor(private UpListsService: UplistsService, private snackbar: MatSnackBar, private router: ActivatedRoute) {
+ formGroup: FormGroup;
+	constructor(private UpListsService: UplistsService, private snackbar: MatSnackBar, private router: ActivatedRoute, private buttomSheet: MatBottomSheet) {
+
+
 		this.UpListsService.list().subscribe((response) => {
-			this.dataSource.data = response.Result;
+      this.dataSource.data = response.Result;
+
+      this.formGroup = new FormGroup({
+      ListID: new FormControl('1', [Validators.required]),
+      AllRecords: new FormControl('1', [Validators.required]),
+      SuccessRecords: new FormControl('1', [Validators.required]),
+      Date: new FormControl('', [Validators.required]),
+      actions: new FormControl('', [Validators.required]),
+      CustomerID: new FormControl('', [Validators.required]),
+      department: new FormControl('', [Validators.required]),
+      add_date: new FormControl('' , [Validators.required]),
+      Last_attempt_date: new FormControl('', [Validators.required]),
+      lock_call: new FormControl('', [Validators.required]),
+      call_status: new FormControl('', [Validators.required]),
+      call_duration: new FormControl('', [Validators.required]),
+      info: new FormControl('', [Validators.required])
+    });
 		});
 	}
+
+
+  openBottomSheet()
+  {
+    this.buttomSheet.open(MySheetUplistsComponent);
+  }
 
 	remove(item: UpLists) {
 		debugger;
