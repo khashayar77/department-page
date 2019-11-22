@@ -109,6 +109,17 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Info1' | translate}} </th>
       <td mat-cell *matCellDef="let element"> {{element.Info1}} </td>
     </ng-container>
+
+    <ng-container matColumnDef="Info2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Info2' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Info2}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Info3">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Info3' | translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.Info3}} </td>
+    </ng-container>
     <!-- action Column -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> {{'action' | translate}} </th>

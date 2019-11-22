@@ -35,7 +35,7 @@ import { MatTooltipModule } from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatSliderModule, DateAdapter} from '@angular/material';
 import { MySheetComponent } from './components/my-sheet/my-sheet.component';
-import {MySheetUplistsComponent} from './components/my-sheet-uplists/my-sheet-uplists.component';
+import { MySheetUplistsComponent } from './components/my-sheet-uplists/my-sheet-uplists.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
