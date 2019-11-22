@@ -1,17 +1,30 @@
-.mat-card
-{
-  height: 600px;
-  margin-left: 30px;
-  padding: 5px 40px;
-  border:1px solid lightgray;
-}
-.mat-icon-button
-{
-  border: 1px solid orangered;
+// .mat-card
+// {
+//   height: 600px;
+//   margin-left: 30px;
+//   padding: 5px 40px;
+//   border:1px solid lightgray;
+// }
+// .mat-icon-button {
+//   border: 5px solid orangered;
+// }
+// }
 
-}
-
-.mat-card-header
-{
+.mat-card-header {
   font-size: 26px;
+}
+.mat-icon-button {
+  font-size: 20px;
+}
+
+.mat-Tooltip {
+  size: 30px;
+}
+
+.container {
+  height: calc(100vh - 64px);
+}
+
+p {
+  direction: ltr;
 }
