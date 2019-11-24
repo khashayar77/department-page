@@ -1,4 +1,4 @@
-<div fxLayout="row" fxLayoutAlign="space-around center" class="container">
+<div fxLayout="row" fxLayoutAlign="center center" class="container">
   <mat-card color="primary" fxFlex="20">
     <mat-card-content>
       <div fxLayout="column">
@@ -16,39 +16,15 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card color="primary" fxFlex="44">
+  <mat-card
+    color="primary"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxFlex="400px"
+  >
     <mat-card-content>
-      <div fxLayout="column" fxFill="80">
-        <!-- <button mat-icon-button fxFill="50px" color="warn">
-          <mat-icon>settings_voice</mat-icon>
-        </button> -->
-        <!-- <mat-card-header>REPORT</mat-card-header>
-        <form fxFlex="120px" fxFlexAlign="center center"></form> -->
-
-        <mat-accordion dir="ltr">
-          <mat-expansion-panel
-            (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false"
-          >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                REPORT
-              </mat-panel-title>
-              <mat-panel-description dir="ltr">
-                تعداد کل تماس های ناموفق دپارتمان ها
-                {{ panelOpenState ? "open" : "closed" }}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>qm-cancel</p>
-            <p>qm-changeline</p>
-            <p>qm-delivery</p>
-
-            <!-- <button mat-raised-button>qm-cancel</button>
-            <button mat-raised-button>qm-changeline</button>
-            <button mat-raised-button>qm-delivery</button> -->
-          </mat-expansion-panel>
-        </mat-accordion>
-      </div>
+      <mat-card-title>تعداد تماس های ناموفق دپارتمان ها</mat-card-title>
+      <div fxLayout="column"></div>
     </mat-card-content>
   </mat-card>
 
@@ -64,6 +40,11 @@
           <mat-icon>settings_voice</mat-icon>
         </button>
         <mat-card-header>Call Result</mat-card-header>
+        <mat-form-field>
+          <div>
+            <input matInput type="text" placeholder="تعداد تماس" />
+          </div>
+        </mat-form-field>
         <form fxFlex="50px" fxFlexAlign="center center"></form>
       </div>
     </mat-card-content>

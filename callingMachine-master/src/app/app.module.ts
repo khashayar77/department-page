@@ -3,11 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  HttpClientModule,
-  HttpClient,
-  HTTP_INTERCEPTORS
-} from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -38,91 +34,89 @@ import { DepartmentServiceMockInterceptore } from './mock-interceptors/departmen
 import { MatTooltipModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {
-  MatNativeDateModule,
-  MatSliderModule,
-  DateAdapter
-} from '@angular/material';
+import { MatNativeDateModule, MatSliderModule, DateAdapter } from '@angular/material';
 import { MySheetComponent } from './components/my-sheet/my-sheet.component';
 import { MySheetUplistsComponent } from './components/my-sheet-uplists/my-sheet-uplists.component';
+import { MySheetCallingListComponent } from './components/my-sheet-calling-list/my-sheet-calling-list.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    LoginComponent,
-    DashboardComponent,
-    UplaodListComponent,
-    DepartmentsComponent,
-    CallingListsComponent,
-    DepartmentDetailComponent,
-    Error404Component,
-    AddDepartmentsComponent,
-    UpListsComponent,
-    MatPaginator,
-    MySheetComponent,
-    MySheetUplistsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    MatTooltipModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    MatDatepickerModule,
-    MatSliderModule,
-    MatNativeDateModule,
-    MatExpansionModule,
+	declarations: [
+		AppComponent,
+		ToolbarComponent,
+		LoginComponent,
+		DashboardComponent,
+		UplaodListComponent,
+		DepartmentsComponent,
+		CallingListsComponent,
+		DepartmentDetailComponent,
+		Error404Component,
+		AddDepartmentsComponent,
+		UpListsComponent,
+		MatPaginator,
+		MySheetComponent,
+		MySheetUplistsComponent,
+		MySheetCallingListComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		HttpClientModule,
+		MatTooltipModule,
+		BrowserAnimationsModule,
+		MaterialModule,
+		FlexLayoutModule,
+		ReactiveFormsModule,
+		MatDatepickerModule,
+		MatSliderModule,
+		MatNativeDateModule,
+		MatExpansionModule,
 
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    FormsModule,
-    FileUploadModule
-  ],
-  providers: [
-    LogedInGuard,
-    DepartmentService,
-    // {
-    // 	provide: HTTP_INTERCEPTORS,
-    // 	useClass: HttpErrorInterceptor,
-    // 	multi: true
-    // },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthServiceMockInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: CallRequestServiceMockInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: UpListsServiceMockInterceptore,
-      multi: true
-    },
+		TranslateModule.forRoot({
+			loader: {
+				provide: TranslateLoader,
+				useFactory: HttpLoaderFactory,
+				deps: [ HttpClient ]
+			}
+		}),
+		FormsModule,
+		FileUploadModule
+	],
+	providers: [
+		LogedInGuard,
+		DepartmentService,
+		// {
+		// 	provide: HTTP_INTERCEPTORS,
+		// 	useClass: HttpErrorInterceptor,
+		// 	multi: true
+		// },
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: AuthServiceMockInterceptor,
+			multi: true
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: CallRequestServiceMockInterceptor,
+			multi: true
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: UpListsServiceMockInterceptore,
+			multi: true
+		},
 
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: DepartmentServiceMockInterceptore,
-      multi: true
-    }
-  ],
-  entryComponents: [MySheetComponent, MySheetUplistsComponent],
-  bootstrap: [AppComponent]
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: DepartmentServiceMockInterceptore,
+			multi: true
+		}
+	],
+	entryComponents: [ MySheetComponent, MySheetUplistsComponent, MySheetCallingListComponent ],
+	bootstrap: [ AppComponent ]
 })
 export class AppModule {}
