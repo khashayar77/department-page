@@ -1,50 +1,46 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="container">
-  <mat-card color="primary" fxFlex="20">
+<div
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  class="container"
+  fxLayoutGap="15px"
+>
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-card color="primary" fxFlex="400px">
+      <mat-card-content>
+        <div fxLayout="column">
+          <mat-icon matTooltip="تعداد تماس های ناموفق دیروز">note</mat-icon>
+          <mat-card-header>REPORT</mat-card-header>
+          <form fxFlex="50px" fxFlexAlign="center center"></form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="center" fxFlex="500px" fxFill class="box3">
+    <mat-card color="primary" fxFill="30">
+      <mat-card-content>
+        <mat-card-title>تعداد تماس های باقی مانده </mat-card-title>
+        <mat-list class="mat-list-item-content">
+          <mat-list-item>qm-cancel</mat-list-item>
+          <mat-divider></mat-divider>
+
+          <mat-list-item>qm-Changeline</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>qm-delivery</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="space-around center"></div>
+  <mat-card color="primary" fxFlex="400px">
     <mat-card-content>
       <div fxLayout="column">
-        <button
-          mat-icon-button
-          fxFill="50px"
-          color="warn"
-          matTooltip="تعداد تماس های نا موفق دیروز"
-        >
-          <mat-icon>note</mat-icon>
-        </button>
-        <mat-card-header>REPORT</mat-card-header>
-        <form fxFlex="50px" fxFlexAlign="center center"></form>
-      </div>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card
-    color="primary"
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    fxFlex="400px"
-  >
-    <mat-card-content>
-      <mat-card-title>تعداد تماس های ناموفق دپارتمان ها</mat-card-title>
-      <div fxLayout="column"></div>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card color="primary" fxFlex="22">
-    <mat-card-content>
-      <div fxLayout="column">
-        <button
-          mat-icon-button
-          fxFill="80px"
-          color="warn"
-          matTooltip="تعداد تماس های ناموفق امروز"
-        >
-          <mat-icon>settings_voice</mat-icon>
-        </button>
+        <mat-icon matTooltip="تعداد کل تماس ها">settings_voice</mat-icon>
         <mat-card-header>Call Result</mat-card-header>
-        <mat-form-field>
-          <div>
-            <input matInput type="text" placeholder="تعداد تماس" />
-          </div>
-        </mat-form-field>
+        <!-- <mat-form-field>
+          <input matInput type="text" placeholder="تعداد تماس" />
+        </mat-form-field> -->
         <form fxFlex="50px" fxFlexAlign="center center"></form>
       </div>
     </mat-card-content>

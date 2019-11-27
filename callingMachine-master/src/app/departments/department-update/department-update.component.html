@@ -1,0 +1,155 @@
+<div fxLayout="column" fxLayoutGap="25px">
+  <h4 fxFlex>
+    ویرایش دپارتمان
+    <b>
+      {{ formGroup.get("department").value }}
+    </b>
+  </h4>
+  <div fxFlex>
+    <form [formGroup]="formGroup">
+      <div fxLayout="column">
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50" id="box">
+            <mat-form-field>
+              <mat-label>فعال</mat-label>
+              <mat-select fxFlex="10" dir="rtl">
+                <mat-option *ngFor="let num of num" [value]="num">
+                  {{ num | activationStatus }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="number"
+                matInput
+                placeholder="اولویت"
+                formControlName="priority"
+                min="1"
+                max="10"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="time"
+                matInput
+                placeholder="ساعت شروع کار"
+                formControlName="start_working_time"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="time"
+                matInput
+                placeholder="ساعت پایان کار"
+                formControlName="end_working_time"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder=" دپارتمان (disabled)"
+                disabled
+                value="دپارتمان"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="(disabled)"
+                disabled
+                value="صف"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="(disabled)"
+                disabled
+                value="url_id"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <mat-label>استراتژی</mat-label>
+              <mat-select fxFlex="10">
+                <mat-option>query_method</mat-option>
+                <mat-option>query_method</mat-option>
+                <mat-option>query_method</mat-option>
+                <mat-option>query_method</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="number"
+                matInput
+                placeholder="تعداد تماس بیشتر"
+                formControlName="call_more"
+                min="1"
+                max="30"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder=" مدت زمان تماس مجدد"
+                formControlName="retry_time"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div fxFlex fxLayout="row">
+    <button fxFlex type="button" (click)="cancel()" mat-button color="primary">
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      fxFlex
+      type="button"
+      (click)="update()"
+      mat-raised-button
+      color="primary"
+    >
+      {{ "save" | translate }}
+    </button>
+  </div>
+</div>

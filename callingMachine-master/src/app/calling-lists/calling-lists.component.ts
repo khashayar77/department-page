@@ -4,12 +4,10 @@ import { CallRequest } from '../interfaces/call-request.interface';
 import { MatTableDataSource } from '@angular/material';
 import { CallingService } from '../services/calling.service';
 import { MatSnackBar } from '@angular/material';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { MatDatepicker } from '@angular/material/datepicker';
 import { MySheetCallingListComponent } from '../components/my-sheet-calling-list/my-sheet-calling-list.component';
-import { CallingRequestQueryRequest } from '../interfaces/calling-request-query-request.interface';
-// import {MatNativeDateModule, MatSliderModule, DateAdapter} from '@angular/material';
+
 export interface Num {
 	value: string;
 	viewValue: string;
@@ -22,37 +20,39 @@ export interface Num {
 export class CallingListsComponent {
 	callStatusList: number[] = [ 1, 2 ];
 	num: Num[] = [ { value: '1', viewValue: '1' }, { value: '2', viewValue: '2' }, { value: '2', viewValue: '2' } ];
-	// tslint:disable-next-line: variable-name
 	current_page: number;
 	total: number;
-
-	displayedColumns: string[] = [
-		'Customer_ID',
-		'Number',
-		'Department',
-		'URL_ID',
-		'Add_Date',
-		'Retry_Time',
-		'Lock_Call',
-		'Attempt',
-		'Call_Status',
-		'qID',
-		'Call_Duration',
-		'Info1',
-		// 'Info2',
-		'Info3',
-		'action'
-	];
+	displayedColumns: string[];
+	@ViewChild(MatPaginator, { static: true })
+	paginator: MatPaginator;
 	dataSource = new MatTableDataSource<CallRequest>([]);
+	pageNo: number;
+
 	constructor(
 		private callingService: CallingService,
-		private MatSnackBar: MatSnackBar,
+		private matSnackBar: MatSnackBar,
 		private bottomSheet: MatBottomSheet
 	) {
-		// tslint:disable-next-line: no-unused-expression
-
+		this.displayedColumns = [
+			'Customer_ID',
+			'Number',
+			'Department',
+			'URL_ID',
+			'Add_Date',
+			'Retry_Time',
+			'Lock_Call',
+			'Attempt',
+			'Call_Status',
+			'qID',
+			'Call_Duration',
+			'Info1',
+			'Info2',
+			'Info3',
+			'action'
+		];
 		this.current_page = 0;
 		this.search({ page_no: 0 });
+		this.getList();
 	}
 	// form group
 	filterForm = new FormGroup({
@@ -63,15 +63,31 @@ export class CallingListsComponent {
 		CallStatusFilter: new FormControl()
 	});
 
-	@ViewChild(MatPaginator, { static: true })
-	paginator: MatPaginator;
+	private getList(pageNo: number = 0, pageSize: number = 1) {
+		this.callingService.list(pageNo, pageSize).subscribe((response) => {
+			this.total = response.total;
+			this.pageNo = response.page_no;
+			this.dataSource.data = response.Result;
+		});
+	}
 
 	ngOnInit() {
 		this.dataSource.paginator = this.paginator;
 	}
 
-	openBottomSheet() {
-		this.bottomSheet.open(MySheetCallingListComponent);
+	openBottomSheet(callRequest: CallRequest) {
+		this.bottomSheet.open(MySheetCallingListComponent, {
+			data: {
+				callRequest
+			}
+		});
+
+		//TODO:
+		this.getList();
+	}
+
+	pageChanged(event: PageEvent) {
+		this.getList(event.pageIndex, event.pageSize);
 	}
 
 	remove(item: CallRequest) {
@@ -79,7 +95,7 @@ export class CallingListsComponent {
 		this.callingService.remove(item.ID).subscribe((res) => {
 			debugger;
 		});
-		this.MatSnackBar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
+		this.matSnackBar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
 	}
 
 	search({ page_no } = {} as any) {

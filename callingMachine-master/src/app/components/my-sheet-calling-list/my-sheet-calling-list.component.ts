@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatDatepicker } from '@angular/material/datepicker';
 import { CallingService } from 'src/app/services/calling.service';
 import { MatSnackBar } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,12 +10,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 	styleUrls: [ './my-sheet-calling-list.component.scss' ]
 })
 export class MySheetCallingListComponent implements OnInit {
+	buuttomSheetRef: any;
+	formGroup: FormGroup;
+	id: string;
+
 	ngOnInit(): void {
 		throw new Error('Method not implemented.');
 	}
-
-	formGroup: FormGroup;
-	id: string;
 
 	constructor(private callingService: CallingService, private router: ActivatedRoute, private snackbar: MatSnackBar) {
 		this.formGroup = new FormGroup({
@@ -47,5 +47,9 @@ export class MySheetCallingListComponent implements OnInit {
 		//   this.snackbar.open('اطلاعات ثبت شد', null, { duration: 999 });
 		//   this.formGroup.patchValue(resp);
 		// });
+	}
+
+	cancel() {
+		this.buuttomSheetRef.dismiss();
 	}
 }

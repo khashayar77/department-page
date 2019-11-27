@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Department } from '../interfaces/department.interface';
@@ -9,8 +9,7 @@ import { map } from 'rxjs/operators';
 	providedIn: 'root'
 })
 export class DepartmentService {
-	constructor(private http: HttpClient) { }
-
+	constructor(private http: HttpClient) {}
 
 	get(id: string): Observable<Department> {
 		return this.http
@@ -24,10 +23,15 @@ export class DepartmentService {
 			.pipe(map((i) => i.Result));
 	}
 
-	list() {
-		return this.http.get<{ Result: Department[]; total: number; page_no: number }>(
-			`${environment.server_ip}/departmentrequests`
-		);
+	list(pageNo: number = 0, pageSize: number = 1) {
+		const params = new HttpParams().set('pageNo', pageNo.toString()).set('pageSize', pageSize.toString());
+		return this.http.get<{
+			Result: Department[];
+			total: number;
+			page_no: number;
+		}>(`${environment.server_ip}/departmentrequests`, {
+			params
+		});
 	}
 
 	remove(DepartmentID): Observable<void> {

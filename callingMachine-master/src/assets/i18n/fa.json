@@ -41,7 +41,7 @@
 	"Retry_Time": "ساعت تماس مجدد",
 	"Attempt": "تعداد تماس",
 	"Call_Status": "وضعیت تماس",
-	"Call_Duration": "مدت مکالمه",
+	"Call_Duration": "مدت زمان مکالمه",
 	"Info1": " کاربر",
 	"ListID": "کد لیست",
 	"AllRecords": "تعداد کل رکورد ها",
@@ -49,6 +49,8 @@
 	"Last_attempt_date": "تاریخ آخرین تلاش",
 	"Date": "تاریخ",
 	"Info2": "",
-	"Info3": "وضعیت ثبت crm",
-	"qID": "جنس تماس"
+	"Info3": "وضعیت ثبت در crm",
+	"qID": "جنس تماس",
+	"Enable": "فعال",
+	"update": "ثبت"
 }

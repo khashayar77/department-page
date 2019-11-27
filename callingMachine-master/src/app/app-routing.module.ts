@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { CallingListsComponent } from './calling-lists/calling-lists.component';
-import { DepartmentsComponent } from './departments/departments.component';
 import { LogedInGuard } from './guards/loged-in.guard';
 import { UplaodListComponent } from './uplaod-list/uplaod-list.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -11,6 +10,7 @@ import { DepartmentDetailComponent } from './department-detail/department-detail
 import { Error404Component } from './error404/error404.component';
 import { AddDepartmentsComponent } from './add-departments/add-departments.component';
 import { UpListsComponent } from './up-lists/up-lists.component';
+import { DepartmentListComponent } from './departments/department-list/department-list.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -30,7 +30,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'departments',
-				component: DepartmentsComponent
+				component: DepartmentListComponent
 			},
 			{
 				path: 'uploadList',

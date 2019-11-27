@@ -1,18 +1,14 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-  <mat-card fxFlex="700px">
-    <mat-card-header>
-      <mat-card-title>
-        ویرایش لیست آپلودها
-        <b>
-          {{ formGroup.get("department").value }}
-        </b>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form [formGroup]="formGroup">
-        <div fxLayout="row wrap" class="fields">
-          <div fxFlex="50"></div>
-
+<div fxLayout="column">
+  <h4 fxFlex>
+    ویرایش لیست آپلودها
+    <b>
+      {{ formGroup.get("department").value }}
+    </b>
+  </h4>
+  <div fxFlex>
+    <form [formGroup]="formGroup">
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -29,14 +25,16 @@
           <div fxFlex="50">
             <mat-form-field>
               <input
-                type="number"
+                type="text"
                 matInput
                 placeholder="کد اشتراک"
                 formControlName="CustomerID"
               />
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -58,11 +56,13 @@
               />
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
-                type="text"
+                type="number"
                 matInput
                 placeholder="تعداد تماس های موفق"
                 formControlName="SuccessRecords"
@@ -80,7 +80,9 @@
               />
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -114,7 +116,9 @@
               <mat-datepicker #picker2></mat-datepicker>
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -125,18 +129,19 @@
               />
             </mat-form-field>
           </div>
-
           <div fxFlex="50">
             <mat-form-field>
               <input
-                type="number"
+                type="text"
                 matInput
                 placeholder=" وضعیت تماس"
                 formControlName="call_status"
               />
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -158,18 +163,27 @@
               <input
                 type="number"
                 matInput
-                placeholder="مدت مکالمه"
+                placeholder="مدت زمان مکالمه"
                 formControlName="call_duration"
               />
             </mat-form-field>
           </div>
         </div>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button type="button" click="edit()" mat-raised-button color="primary">
-        {{ "save" | translate }}
-      </button>
-    </mat-card-actions>
-  </mat-card>
+      </div>
+    </form>
+  </div>
+  <div fxFlex fxLayout="row">
+    <button fxFlex type="button" (click)="cancel()" mat-button color="warn">
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      fxFlex
+      type="button"
+      (click)="update()"
+      mat-raised-button
+      color="primary"
+    >
+      {{ "save" | translate }}
+    </button>
+  </div>
 </div>

@@ -1,16 +1,9 @@
-.mat-card-header {
-	font-size: 26px;
-}
-
 .container {
 	height: calc(100vh - 64px);
+	padding: 200px;
+	margin-right: 150px;
 }
 
-p {
-	direction: ltr;
-}
-
-.btn button {
-	margin-bottom: 100px;
-	border: none;
+.mat-list-item-content {
+	float: left;
 }

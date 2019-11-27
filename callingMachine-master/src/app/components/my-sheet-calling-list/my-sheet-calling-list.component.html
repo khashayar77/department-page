@@ -1,27 +1,15 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-  <mat-card fxFlex="700px">
-    <mat-card-header>
-      <mat-card-title>
-        ویرایش لیست تماس ها
-        <b>
-          <!-- {{ formGroup.get("department").value }} -->
-        </b>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form [formGroup]="formGroup">
-        <div fxLayout="row wrap" class="fields">
-          <!-- <div fxFlex="50">
-            <mat-form-field>
-              <mat-label>فعال</mat-label>
-              <mat-select fxFlex="10">
-                <mat-option *ngFor="let num of num" [value]="num.value">
-                  {{ num.viewValue }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div> -->
+<div fxLayout="column" fxLayoutGap="25px">
+  <h4 fxFlex>
+    ویرایش لیست تماس ها
+    <b>
+      <!-- {{ formGroup.get("department").value }} -->
+    </b>
+  </h4>
 
+  <div fxFlex>
+    <form [formGroup]="formGroup">
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -45,7 +33,9 @@
               />
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -68,7 +58,9 @@
               />
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -95,7 +87,9 @@
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -117,7 +111,9 @@
               />
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -141,7 +137,9 @@
               />
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -167,7 +165,9 @@
               />
             </mat-form-field>
           </div>
+        </div>
 
+        <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
               <input
@@ -194,12 +194,16 @@
             </mat-form-field>
           </div>
         </div>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button type="button" click="edit()" mat-raised-button color="primary">
-        {{ "save" | translate }}
-      </button>
-    </mat-card-actions>
-  </mat-card>
+      </div>
+    </form>
+  </div>
+  <div fxFlex fxLayout="row">
+    <button fxFlex type="button" (click)="cancel()" mat-button color="primary">
+      {{ "cancel" | translate }}
+    </button>
+
+    <button fxFlex type="button" click="edit()" mat-button color="primary">
+      {{ "save" | translate }}
+    </button>
+  </div>
 </div>

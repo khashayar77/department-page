@@ -10,6 +10,6 @@ export interface Department {
 	queue: string;
 	query_method: string;
 	call_more: number;
-	retry_time: number;
+	retry_time: string;
 	url_id: string;
 }
