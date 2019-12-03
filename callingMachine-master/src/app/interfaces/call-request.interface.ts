@@ -1,14 +1,16 @@
 export interface CallRequest {
-	ID: number;
-	Customer_ID: number;
-	Number: number;
-	Department: string;
-	URL_ID: number;
-	Add_Date: Date;
-	Retry_Time: number;
-	Lock_Call: number;
-	Attempt: number;
-	Call_Status: string;
-	Call_Duration: number;
+	ID: string;
+	CustomerId: string;
+	PhoneNumber: string;
+	DepartmentName: string;
+	UrlId: string;
+	AddDate: string;
+	RetryTime: string;
+	LockCall: string;
+	Attempt: string;
+	CallStatus: string;
+	CallDuration: string;
 	Info1: string;
+	Info2: string;
+	Info3: string;
 }

@@ -48,6 +48,7 @@ import { DepartmentServiceMockInterceptore } from './mock-interceptors/departmen
 import { DepartmentService } from './services/department.service';
 import { DepartmentsModule } from './departments/departments.module';
 import { CustomMatPaginatorIntl } from './departments/department-list/CustomMatPaginatorIntl ';
+import { TokenInterceptorInterceptor } from './interceptors/token-header.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -128,12 +129,17 @@ export function HttpLoaderFactory(http: HttpClient) {
 			useClass: UpListsServiceMockInterceptore,
 			multi: true
 		},
-
 		{
 			provide: HTTP_INTERCEPTORS,
-			useClass: DepartmentServiceMockInterceptore,
+			useClass: TokenInterceptorInterceptor,
 			multi: true
 		}
+
+		// {
+		// 	provide: HTTP_INTERCEPTORS,
+		// 	useClass: DepartmentServiceMockInterceptore,
+		// 	multi: true
+		// }
 	],
 
 	entryComponents: [ MySheetUplistsComponent, MySheetCallingListComponent ],

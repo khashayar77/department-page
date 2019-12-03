@@ -10,6 +10,6 @@ export class LogedInGuard implements CanActivate {
 	constructor(private authService: AuthService, private router: Router) {}
 
 	canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree {
-		return this.authService.user.getValue() != null ? true : this.router.parseUrl('/login');
+		return this.authService.user$.getValue() != null ? true : this.router.parseUrl('/login');
 	}
 }

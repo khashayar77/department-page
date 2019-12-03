@@ -1,48 +1,71 @@
-<div
-  fxLayout="row"
-  fxLayoutAlign="space-between center"
-  class="container"
-  fxLayoutGap="15px"
->
-  <div fxLayout="row" fxLayoutAlign="space-around center">
-    <mat-card color="primary" fxFlex="400px">
+<div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="15px">
+  <div fxFlex="500px">
+    <mat-card color="primary">
       <mat-card-content>
         <div fxLayout="column">
-          <mat-icon matTooltip="تعداد تماس های ناموفق دیروز">note</mat-icon>
-          <mat-card-header>REPORT</mat-card-header>
+          <div fxFlex="row" fxLayoutAlign="center">
+            <mat-card-header>گزارش تماس های دیروز</mat-card-header>
+            <mat-icon matTooltip="تعداد تماس های ناموفق دیروز">note</mat-icon>
+          </div>
+          <br>
+          <div fxFlex="row" fxLayoutAlign="center">
+              <h4>448</h4>
+          </div>
+
           <form fxFlex="50px" fxFlexAlign="center center"></form>
         </div>
       </mat-card-content>
     </mat-card>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="center" fxFlex="500px" fxFill class="box3">
-    <mat-card color="primary" fxFill="30">
+  <div fxFlex="500px">
+    <mat-card color="primary">
+      <mat-card-title fxLayout="row" fxLayoutAlign="center center">تعداد تماس های باقی مانده </mat-card-title>
       <mat-card-content>
-        <mat-card-title>تعداد تماس های باقی مانده </mat-card-title>
-        <mat-list class="mat-list-item-content">
-          <mat-list-item>qm-cancel</mat-list-item>
-          <mat-divider></mat-divider>
+        <mat-list>
+            <mat-divider></mat-divider>
 
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <mat-list-item>qm-cancel</mat-list-item>
+          <h4 class=X>448</h4><br>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
           <mat-list-item>qm-Changeline</mat-list-item>
-          <mat-divider></mat-divider>
+          <h4 class=X>338</h4><br>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div fxLayout="row" fxLayoutAlign="space-between center">
           <mat-list-item>qm-delivery</mat-list-item>
+          <h4 class=X>778</h4><br>
+        </div>
+
         </mat-list>
       </mat-card-content>
     </mat-card>
   </div>
 
-  <div fxLayout="column" fxLayoutAlign="space-around center"></div>
-  <mat-card color="primary" fxFlex="400px">
-    <mat-card-content>
-      <div fxLayout="column">
-        <mat-icon matTooltip="تعداد کل تماس ها">settings_voice</mat-icon>
-        <mat-card-header>Call Result</mat-card-header>
-        <!-- <mat-form-field>
-          <input matInput type="text" placeholder="تعداد تماس" />
-        </mat-form-field> -->
-        <form fxFlex="50px" fxFlexAlign="center center"></form>
-      </div>
-    </mat-card-content>
-  </mat-card>
+  <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="15px">
+    <div fxFlex="500px">
+      <mat-card color="primary">
+        <mat-card-content>
+          <div fxLayout="column">
+            <div fxFlex="row" fxLayoutAlign="center">
+              <mat-card-header>تعداد کل تماس ها</mat-card-header>
+              <mat-icon matTooltip="تعداد تماس های ناموفق دیروز">
+                settings_voice</mat-icon>
+            </div>
+            <br>
+            <div fxFlex="row" fxLayoutAlign="center">
+              <h4>448</h4>
+            </div>
+
+            <form fxFlex="50px" fxFlexAlign="center center"></form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>

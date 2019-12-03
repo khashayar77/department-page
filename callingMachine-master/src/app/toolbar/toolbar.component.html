@@ -1,13 +1,75 @@
-<mat-toolbar color="primary">
-    <button mat-button routerLink="/dashboard" routerLinkActive="router-link-active">{{'Dashboard'|translate}}</button>
-    <button mat-button routerLink="/uploadList" routerLinkActive="router-link-active">{{'Upload List'|translate}}</button>
-    <button mat-button routerLink="/departments" routerLinkActive="router-link-active">{{'Departments'|translate}}</button>
-    <button mat-button routerLink="/callingLists" routerLinkActive="router-link-active">{{'Calling Lists'|translate}}</button>
-    <button mat-button [routerLink]="['/UpLists']" routerLinkActive="router-link-active" >{{'UpLists' | translate}}</button>
-    <div fxFlex></div>
-    <button mat-icon-button aria-label="Button that displays a tooltip when focused or hovered over"  matTooltip="خروج" fxFlex="nogrow" (click)="logout()" routerLinkActive="router-link-active">
-        {{'Logout'|translate}} <mat-icon>account_circle</mat-icon>
+<mat-toolbar fxLayout="row" color="primary">
+  <div id="app-name" fxFlex="nogrow">
+    سامانه مدیریت تماس
+  </div>
+  <div fxFlex="grow" fxLayout="row" fxLayoutAlign="center">
+    <button
+      fxFlex="nogrow"
+      mat-button
+      routerLink="/dashboard"
+      routerLinkActive="router-link-active"
+    >
+      {{ "Dashboard" | translate }}
     </button>
+    <button
+      fxFlex="nogrow"
+      mat-button
+      routerLink="/uploadList"
+      routerLinkActive="router-link-active"
+    >
+      {{ "Upload List" | translate }}
+    </button>
+    <button
+      fxFlex="nogrow"
+      mat-button
+      routerLink="/departments"
+      routerLinkActive="router-link-active"
+    >
+      {{ "Departments" | translate }}
+    </button>
+    <button
+      fxFlex="nogrow"
+      mat-button
+      routerLink="/callingLists"
+      routerLinkActive="router-link-active"
+    >
+      {{ "Calling Lists" | translate }}
+    </button>
+    <button
+      fxFlex="nogrow"
+      mat-button
+      [routerLink]="['/UpLists']"
+      routerLinkActive="router-link-active"
+    >
+      {{ "UpLists" | translate }}
+    </button>
+  </div>
+  <div fxFlex="0 0 auto">
+    علی طاهری
+  </div>
+  <button
+    fxFlex="nogrow"
+    mat-icon-button
+    aria-label="Button that displays a tooltip when focused or hovered over"
+    matTooltip="خروج"
+    (click)="logout()"
+    routerLinkActive="router-link-active"
+  >
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
 </mat-toolbar>
-<router-outlet></router-outlet>
 
+<mat-sidenav-container>
+  <mat-sidenav mode="side"></mat-sidenav>
+  <mat-sidenav-content>
+    <div id="main-container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<footer>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <div fxFlex="0 0 auto">Copyright: shatel.ir</div>
+  </div>
+</footer>

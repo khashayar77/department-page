@@ -13,7 +13,7 @@
           <div fxFlex="50">
             <mat-form-field>
               <input
-                type="number"
+                type="text"
                 matInput
                 placeholder="کد اشتراک"
                 formControlName="customerID"
@@ -93,10 +93,10 @@
           <div fxFlex="50">
             <mat-form-field>
               <input
-                type="number"
+                type="text"
                 matInput
                 placeholder="URL ID"
-                formControlName="Url_ID"
+                formControlName="UrlId"
               />
             </mat-form-field>
           </div>
@@ -159,7 +159,7 @@
                 type="time"
                 matInput
                 placeholder="مدت زمان مکالمه"
-                formControlName="Call_Duration"
+                formControlName="CallDurationLimit"
                 min="1"
                 max="30"
               />
@@ -198,11 +198,17 @@
     </form>
   </div>
   <div fxFlex fxLayout="row">
-    <button fxFlex type="button" (click)="cancel()" mat-button color="primary">
+    <button fxFlex type="button" (click)="cancel()" mat-raised-button>
       {{ "cancel" | translate }}
     </button>
 
-    <button fxFlex type="button" click="edit()" mat-button color="primary">
+    <button
+      fxFlex
+      type="button"
+      (click)="edit()"
+      mat-raised-button
+      color="primary"
+    >
       {{ "save" | translate }}
     </button>
   </div>

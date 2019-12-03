@@ -1,111 +1,290 @@
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" flex-align="center">
-    <ng-container matColumnDef="ListID">
-      <th mat-header-cell *matHeaderCellDef>{{ "ListID" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.ListID }}</td>
-    </ng-container>
+<div fxLayout="row wrap" fxLayoutAlign="center">
+  <div fxFlex="0 1 1400px" fxLayout="column" fxLayoutGap="25px">
+    <h4 class="header" fxFlex>
+      {{ "upload list" | translate }}
+    </h4>
 
-    <ng-container matColumnDef="AllRecords">
-      <th mat-header-cell *matHeaderCellDef>{{ "AllRecords" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.AllRecords }}</td>
-    </ng-container>
+    <mat-card fxFlex>
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" flex-align="center">
+          <!-- <ng-container matColumnDef="ListID">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.ListID"
+              *matHeaderCellDef
+            >
+              {{ "ListID" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.ListID"
+            >
+              {{ element.ListID }}
+            </td>
+          </ng-container> -->
 
-    <ng-container matColumnDef="SuccessRecords">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "SuccessRecords" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let element">{{ element.SuccessRecords }}</td>
-    </ng-container>
+          <ng-container matColumnDef="Description">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.Description"
+              *matHeaderCellDef
+            >
+              {{ "Description" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.Description"
+            >
+              {{ element.Description }}
+            </td>
+          </ng-container>
 
-    <ng-container matColumnDef="numberOfDailed">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "numberOfDailed" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let element">{{ element.numberOfDailed }}</td>
-    </ng-container>
+          <ng-container matColumnDef="Id">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.Id"
+              *matHeaderCellDef
+            >
+              {{ "Id" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.Id"
+            >
+              {{ element.Id }}
+            </td>
+          </ng-container>
 
-    <ng-container matColumnDef="CustomerID">
-      <th mat-header-cell *matHeaderCellDef>{{ "Customer_ID" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.CustomerID }}</td>
-    </ng-container>
+          <ng-container matColumnDef="Name">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.Name"
+              *matHeaderCellDef
+            >
+              {{ "Name" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.Name"
+            >
+              {{ element.Name }}
+            </td>
+          </ng-container>
 
-    <ng-container matColumnDef="department">
-      <th mat-header-cell *matHeaderCellDef>{{ "Department" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.department }}</td>
-    </ng-container>
+          <ng-container matColumnDef="OperatorName">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.OperatorName"
+              *matHeaderCellDef
+            >
+              {{ "OperatorName" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.OperatorName"
+            >
+              {{ element.OperatorName }}
+            </td>
+          </ng-container>
 
-    <ng-container matColumnDef="add_date">
-      <th mat-header-cell *matHeaderCellDef>{{ "Add_Date" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.add_date }}</td>
-    </ng-container>
+          <!-- <ng-container matColumnDef="AllRecords">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.AllRecords"
+              *matHeaderCellDef
+            >
+              {{ "AllRecords" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.AllRecords"
+            >
+              {{ element.AllRecords }}
+            </td>
+          </ng-container> -->
 
-    <ng-container matColumnDef="Last_attempt_date">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "Last_attempt_date" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let element">
-        {{ element.Last_attempt_date }}
-      </td>
-    </ng-container>
+          <!-- <ng-container matColumnDef="IssueDate	">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.IssueDate"
+              *matHeaderCellDef
+            >
+              {{ "IssueDate	" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.IssueDate"
+            >
+              {{ element.IssueDate }}
+            </td>
+          </ng-container> -->
 
-    <ng-container matColumnDef="Date">
-      <th mat-header-cell *matHeaderCellDef>{{ "Date" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.Date }}</td>
-    </ng-container>
+          <!-- <ng-container matColumnDef="add_date">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.add_date"
+              *matHeaderCellDef
+            >
+              {{ "Add_Date" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.add_date"
+            >
+              {{ element.add_date }}
+            </td>
+          </ng-container>  -->
 
-    <ng-container matColumnDef="lock_call">
-      <th mat-header-cell *matHeaderCellDef>{{ "lock_call" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.lock_call }}</td>
-    </ng-container>
+          <!-- <ng-container matColumnDef="Last_attempt_date">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.Last_attempt_date"
+              *matHeaderCellDef
+            >
+              {{ "Last_attempt_date" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.Last_attempt_date"
+            >
+              {{ element.Last_attempt_date }}
+            </td>
+          </ng-container> -->
+          <!--
+          <ng-container matColumnDef="Date">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.Date"
+              *matHeaderCellDef
+            >
+              {{ "Date" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.Date"
+            >
+              {{ element.Date }}
+            </td>
+          </ng-container> -->
 
-    <ng-container matColumnDef="call_status">
-      <th mat-header-cell *matHeaderCellDef>{{ "Call_Status" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.call_status }}</td>
-    </ng-container>
+          <!-- <ng-container matColumnDef="lock_call">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.lock_call"
+              *matHeaderCellDef
+            >
+              {{ "lock_call" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.lock_call"
+            >
+              {{ element.lock_call }}
+            </td>
+          </ng-container> -->
 
-    <ng-container matColumnDef="call_duration">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "Call_Duration" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let element">{{ element.call_duration }}</td>
-    </ng-container>
+          <!-- <ng-container matColumnDef="call_status">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.call_status"
+              *matHeaderCellDef
+            >
+              {{ "Call_Status" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.call_status"
+            >
+              {{ element.call_status }}
+            </td>
+          </ng-container> -->
 
-    <ng-container matColumnDef="info">
-      <th mat-header-cell *matHeaderCellDef>{{ "info" | translate }}</th>
-      <td mat-cell *matCellDef="let element">{{ element.info }}</td>
-    </ng-container>
+          <!-- <ng-container matColumnDef="CallDurationLimit">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.CallDurationLimit"
+              *matHeaderCellDef
+            >
+              {{ "CallDurationLimit" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.CallDurationLimit"
+            >
+              {{ element.CallDurationLimit }}
+            </td>
+          </ng-container> -->
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>{{ "action" | translate }}</th>
-      <td mat-cell *matCellDef="let element">
-        <!-- <button
-          mat-icon-button
-          aria-label="Example icon-button with a delete icon"
-          (click)="remove(element)"
-          matTooltip="حذف"
-        >
-          <mat-icon>delete</mat-icon>
-        </button> -->
+          <!-- <ng-container matColumnDef="info">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.info"
+              *matHeaderCellDef
+            >
+              {{ "info" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.info"
+            >
+              {{ element.info }}
+            </td>
+          </ng-container> -->
 
-        <button
-          mat-icon-button
-          aria-label="exmaple icon-button with a get_app icon"
-          matTooltip="نمایش جزئیات"
-          (click)="openBottomSheet(element)"
-        >
-          <mat-icon>remove_red_eye</mat-icon>
-        </button>
-      </td>
-    </ng-container>
+          <ng-container matColumnDef="actions">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.actions"
+              *matHeaderCellDef
+            >
+              {{ "action" | translate }}
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <!-- <button
+            mat-icon-button
+            aria-label="Example icon-button with a delete icon"
+            (click)="remove(element)"
+            matTooltip="حذف"
+          >
+            <mat-icon>delete</mat-icon>
+          </button> -->
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+              <button
+                mat-icon-button
+                aria-label="exmaple icon-button with a get_app icon"
+                matTooltip="نمایش جزئیات"
+                (click)="openBottomSheet(element)"
+              >
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+            </td>
+          </ng-container>
 
-  <mat-paginator
-    [pageSizeOptions]="[10, 25, 100]"
-    [length]="Total"
-    [pageIndex]="PageNo"
-    [pageSize]="1"
-  ></mat-paginator>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <!-- <mat-paginator
+          [pageSizeOptions]="[10, 25, 100]"
+          [length]="Total"
+          [pageIndex]="PageNo"
+          [pageSize]="1"
+        ></mat-paginator> -->
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

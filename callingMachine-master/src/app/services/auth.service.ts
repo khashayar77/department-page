@@ -15,15 +15,16 @@ const LOCAL_STORAGE_KEY = 'user';
 	providedIn: 'root'
 })
 export class AuthService {
-	user = new BehaviorSubject<User>(null);
+	user$ = new BehaviorSubject<User>(null);
 	constructor(private http: HttpClient, private router: Router) {
 		const stringifiedUser = localStorage.getItem(environment.LOCAL_STORAGE_KEY);
 		if (stringifiedUser) {
 			const user = JSON.parse(stringifiedUser);
-			this.user.next(user);
+			this.user$.next(user);
 		}
 
-		this.user.subscribe((user) => {
+		this.user$.subscribe((user) => {
+			debugger;
 			if (user) localStorage.setItem(environment.LOCAL_STORAGE_KEY, JSON.stringify(user));
 			else localStorage.removeItem(environment.LOCAL_STORAGE_KEY);
 		});
@@ -32,25 +33,29 @@ export class AuthService {
 	logout() {
 		this.http.get<User>(`${environment.server_ip}/logout`).subscribe((res) => {
 			localStorage.removeItem(environment.LOCAL_STORAGE_KEY);
-			this.user.next(null);
+			this.user$.next(null);
 			this.router.navigate([ '/login' ]);
 		});
 	}
 
 	login({ username, password }: { username: string; password: string }): Observable<User> {
 		return this.http
-			.post<User>(`${environment.server_ip}/login`, { username, password, returnSecureToken: true })
+			.post<string>(`${environment.server_ip}/login`, { username, password, returnSecureToken: true })
 			.pipe(
-				map((resData) => {
-					return this.handleAuthentication(resData);
+				map((token) => {
+					debugger;
+					return this.handleAuthentication(token);
 				})
 			);
 	}
 
-	private handleAuthentication(userData: User) {
-		const user = new User(userData);
-		this.user.next(user);
+	private handleAuthentication(token: string) {
+		const user = new User({ token });
+		this.user$.next(user);
 		return user;
+	}
+	getToken(): string {
+		return this.user$.getValue() ? this.user$.getValue().token : '';
 	}
 
 	private handleError(errorRes: HttpErrorResponse) {

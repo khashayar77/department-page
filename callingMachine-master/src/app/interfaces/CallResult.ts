@@ -1,17 +1,17 @@
 export interface CallResult {
-	Customer_ID: number;
-	uniqeID: string;
-	qID: string;
-	Number: number;
-	Department: string;
-	URL_ID: number;
-	Add_Date: Date;
-	Retry_Time: number;
-	Lock_Call: number;
-	Attempt: number;
-	Call_Status: number;
-	Call_Duration: number;
+	CustomerId: string;
+	PhoneNumber: string;
+	DepartmentName: string;
+	UrlId: string;
+	AddDate: string;
+	LastAttemptDate: string;
+	RetryTime: string;
+	LockCall: string;
+	Attempt: string;
+	CallStatus: string;
+	PickUp: string;
+	CallDuration: string;
 	Info1: string;
-	// Info2: string;
-	Info3: string;
+	info2: string;
+	info3: string;
 }

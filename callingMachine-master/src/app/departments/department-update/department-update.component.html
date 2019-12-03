@@ -2,12 +2,158 @@
   <h4 fxFlex>
     ویرایش دپارتمان
     <b>
-      {{ formGroup.get("department").value }}
+      {{ formGroup.get("Name").value }}
     </b>
   </h4>
   <div fxFlex>
     <form [formGroup]="formGroup">
       <div fxLayout="column">
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                matInput
+                type="text"
+                placeholder="شناسه"
+                formControlName="Id"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50" id="box">
+            <mat-form-field>
+              <mat-label>فعال</mat-label>
+              <mat-select fxFlex="10" dir="rtl">
+                <mat-option *ngFor="let num of num" [value]="num">
+                  {{ num | activationStatus }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="اولویت"
+                formControlName="Priority"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="واحد"
+                formControlName="Unit"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="نام دپارتمان"
+                formControlName="Name"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="ساعت شروع کار"
+                formControlName="StartWorkingTime"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="ساعت پایان کار"
+                formControlName="EndWorkingTime"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="صف"
+                formControlName="Queue"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="UrlId"
+                formControlName="UrlId"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <mat-label>استراتژی</mat-label>
+              <mat-select fxFlex="10">
+                <mat-option>QueryMethod</mat-option>
+                <mat-option>QueryMethod</mat-option>
+                <mat-option>QueryMethod</mat-option>
+                <mat-option>QueryMethod</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="تعداد تماس بیشتر"
+                formControlName="CallMore"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="ساعت تماس مجدد"
+                formControlName="RetryTime"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!--
         <div fxFlex="row" fxLayoutGap="15px">
           <div fxFlex="50" id="box">
             <mat-form-field>
@@ -26,9 +172,33 @@
                 type="number"
                 matInput
                 placeholder="اولویت"
-                formControlName="priority"
+                formControlName="Priority"
                 min="1"
                 max="10"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div fxFlex="row" fxLayoutGap="15px">
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="number"
+                matInput
+                placeholder="روز های غیرکاری"
+                formControlName="NoneWorkingDayTableId"
+              />
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="50">
+            <mat-form-field>
+              <input
+                type="number"
+                matInput
+                placeholder="مدت زمان مکالمه"
+                formControlName="CallDurationLimit"
               />
             </mat-form-field>
           </div>
@@ -41,7 +211,7 @@
                 type="time"
                 matInput
                 placeholder="ساعت شروع کار"
-                formControlName="start_working_time"
+                formControlName="StartWorkingTime"
               />
             </mat-form-field>
           </div>
@@ -52,7 +222,7 @@
                 type="time"
                 matInput
                 placeholder="ساعت پایان کار"
-                formControlName="end_working_time"
+                formControlName="EndWorkingTime"
               />
             </mat-form-field>
           </div>
@@ -92,7 +262,7 @@
                 matInput
                 placeholder="(disabled)"
                 disabled
-                value="url_id"
+                value="UrlId"
               />
             </mat-form-field>
           </div>
@@ -101,10 +271,10 @@
             <mat-form-field>
               <mat-label>استراتژی</mat-label>
               <mat-select fxFlex="10">
-                <mat-option>query_method</mat-option>
-                <mat-option>query_method</mat-option>
-                <mat-option>query_method</mat-option>
-                <mat-option>query_method</mat-option>
+                <mat-option>QueryMethod</mat-option>
+                <mat-option>QueryMethod</mat-option>
+                <mat-option>QueryMethod</mat-option>
+                <mat-option>QueryMethod</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -117,7 +287,7 @@
                 type="number"
                 matInput
                 placeholder="تعداد تماس بیشتر"
-                formControlName="call_more"
+                formControlName="CallMore"
                 min="1"
                 max="30"
               />
@@ -134,7 +304,7 @@
               />
             </mat-form-field>
           </div>
-        </div>
+        </div> -->
       </div>
     </form>
   </div>

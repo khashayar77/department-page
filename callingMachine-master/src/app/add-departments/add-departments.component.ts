@@ -20,15 +20,15 @@ export class AddDepartmentsComponent {
 	constructor(private snackbar: MatSnackBar) {
 		this.formGroup = new FormGroup({
 			enable: new FormControl('1', [ Validators.required ]),
-			priority: new FormControl('', [ Validators.required ]),
+			Priority: new FormControl('', [ Validators.required ]),
 			department: new FormControl('', [ Validators.required ]),
-			start_working_time: new FormControl(''),
-			end_working_time: new FormControl(''),
+			StartWorkingTime: new FormControl(''),
+			EndWorkingTime: new FormControl(''),
 			nwd_table_id: new FormControl({ value: '', disabled: true }),
-			queue: new FormControl(''),
-			url_id: new FormControl(''),
-			query_method: new FormControl(''),
-			call_more: new FormControl(''),
+			Queue: new FormControl(''),
+			UrlId: new FormControl(''),
+			QueryMethod: new FormControl(''),
+			CallMore: new FormControl(''),
 			retry_time: new FormControl('')
 		});
 	}

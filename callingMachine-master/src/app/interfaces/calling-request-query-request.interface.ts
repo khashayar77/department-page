@@ -1,6 +1,6 @@
 export interface CallingRequestQueryRequest {
 	criteria: {
-		Customer_ID?: number;
+		CustomerId?: number;
 		Number?: number;
 		Department?: string;
 		addDate?: Date;

@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { pluck } from 'rxjs/operators';
 import { DepartmentService } from 'src/app/services/department.service';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material';
-import { Department } from 'src/app/interfaces/department';
+import { Department } from 'src/app/interfaces/department.interface';
 
 @Component({
 	selector: 'app-department-update',
@@ -28,27 +28,33 @@ export class DepartmentUpdateComponent implements OnInit {
 		this.create_formGroup();
 		if (data) {
 			this.department = this.data.department;
-			this.id = this.department.id;
+			this.id = this.department.Id;
 			this.formGroup.patchValue(this.department);
 		}
 	}
 
 	private create_formGroup() {
 		this.formGroup = new FormGroup({
-			id: new FormControl('1', [ Validators.required ]),
-			info: new FormControl('1', [ Validators.required ]),
-			enable: new FormControl('1', [ Validators.required ]),
-			priority: new FormControl('', [ Validators.required ]),
+			Id: new FormControl('', [ Validators.required ]),
+			Name: new FormControl({ value: '', disabled: true }),
+
 			Unit: new FormControl({ value: '', disabled: true }),
-			department: new FormControl('', [ Validators.required ]),
-			start_working_time: new FormControl('', [ Validators.required ]),
-			end_working_time: new FormControl(''),
-			nwd_table_id: new FormControl({ value: '', disabled: true }),
-			queue: new FormControl(''),
-			url_id: new FormControl(''),
-			query_method: new FormControl(''),
-			call_more: new FormControl(''),
-			retry_time: new FormControl('', [ Validators.required ])
+			Enable: new FormControl(),
+
+			Priority: new FormControl(''),
+			StartWorkingTime: new FormControl(''),
+
+			EndWorkingTime: new FormControl(''),
+			NoneWorkingDayTableId: new FormControl(''),
+
+			Queue: new FormControl({ value: '', disabled: true }),
+			QueryMethod: new FormControl(''),
+
+			UrlId: new FormControl(''),
+			CallMore: new FormControl(''),
+
+			RetryTime: new FormControl(''),
+			CallDurationLimit: new FormControl('')
 		});
 	}
 
@@ -67,14 +73,9 @@ export class DepartmentUpdateComponent implements OnInit {
 	update(): void {
 		if (this.formGroup.invalid) {
 			this.snackbar.open(' اطلاعات کامل نیست', null, { duration: 999 });
-			return;
+		} else if (this.formGroup.valid) {
+			this.snackbar.open('اطلاعات  ثبت شد', null, { duration: 999 });
 		}
-
-		this.departmentService.update(this.id, this.formGroup.value).subscribe((department) => {
-			this.snackbar.open('اطلاعات ثبت شد ', null, { duration: 999 });
-			this.formGroup.patchValue(department);
-			this.bottomSheetRef.dismiss(department);
-		});
 	}
 	cancel() {
 		this.bottomSheetRef.dismiss();

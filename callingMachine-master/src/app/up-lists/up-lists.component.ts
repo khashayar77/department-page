@@ -9,44 +9,33 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MySheetUplistsComponent } from '../components/my-sheet-uplists/my-sheet-uplists.component';
-
+import { Descriptionservice } from 'src/app/services/description.service';
 @Component({
 	selector: 'app-up-lists',
 	templateUrl: './up-lists.component.html',
 	styleUrls: [ './up-lists.component.scss' ]
 })
 export class UpListsComponent implements OnInit {
-	dataSource = new MatTableDataSource<UpLists>([]);
+	dataSource = new MatTableDataSource();
 	id: string;
 	uplists: UpLists;
 	selectedDepartment: UpLists;
 	displayedColumns: string[];
-	@ViewChild(MatPaginator, { static: true })
-	paginator: MatPaginator;
-	PageNo: number;
-	Total: number;
+	// @ViewChild(MatPaginator, { static: true })
+	// paginator: MatPaginator;
+	// PageNo: number;
+	// Total: number;
+	descriptions: { [key: string]: string };
 
 	constructor(
 		private UpListsService: UplistsService,
+		private descriptionservice: Descriptionservice,
 		private snackbar: MatSnackBar,
 		private router: ActivatedRoute,
 		private buttomSheet: MatBottomSheet
 	) {
-		this.displayedColumns = [
-			'ListID',
-			'CustomerID',
-			'info',
-			'AllRecords',
-			'SuccessRecords',
-			'department',
-			'Date',
-			'add_date',
-			'Last_attempt_date',
-			'lock_call',
-			'call_status',
-			'call_duration',
-			'actions'
-		];
+		this.descriptions = this.descriptionservice.description;
+		this.displayedColumns = [ 'Description', 'Id', 'Name', 'OperatorName', 'actions' ];
 
 		this.getList();
 
@@ -65,22 +54,22 @@ export class UpListsComponent implements OnInit {
 		// 		Last_attempt_date: new FormControl(''),
 		// 		lock_call: new FormControl(''),
 		// 		call_status: new FormControl(''),
-		// 		call_duration: new FormControl(''),
+		// 		CallDurationLimit: new FormControl(''),
 		// 		info: new FormControl('')
 		// 	});
 		// });
 	}
 
-	private getList(pageNo: number = 0, pagesize: number = 1) {
-		this.UpListsService.list(pageNo, pagesize).subscribe((response) => {
-			this.Total = response.total;
-			this.PageNo = response.page_no;
-			this.dataSource.data = response.Result;
+	private getList() {
+		this.UpListsService.list().subscribe((uplists) => {
+			// this.Total = response.total;
+			// this.PageNo = response.page_no;
+			this.dataSource.data = uplists;
 		});
 	}
 
 	ngOnInit() {
-		this.dataSource.paginator = this.paginator;
+		// this.dataSource.paginator = this.paginator;
 	}
 
 	openBottomSheet(uplists: UpLists) {
@@ -95,9 +84,9 @@ export class UpListsComponent implements OnInit {
 		this.getList();
 	}
 
-	pageChanged(event: PageEvent) {
-		this.getList(event.pageIndex, event.pageSize);
-	}
+	// pageChanged(event: PageEvent) {
+	// 	this.getList(event.pageIndex, event.pageSize);
+	// }
 
 	// remove(item: UpLists) {
 	// 	this.UpListsService.remove(item.ID).subscribe((res) => {});

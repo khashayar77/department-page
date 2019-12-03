@@ -1,27 +1,11 @@
 table {
 	width: 100%;
-	text-align: center;
+	td,
+	th {
+		text-align: right;
+	}
 }
 
-table th {
-	text-align: center;
-	color: black;
-}
-
-table td {
-	margin-left: 60px;
-}
-
-.filter__form {
+mat-form-field {
 	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.filter__form .form-group {
-	margin: 10px;
-}
-
-.mat-select {
-	min-width: 180px;
 }

@@ -30,24 +30,15 @@ export class MySheetUplistsComponent implements OnInit {
 	id: string;
 	uplists: UpLists;
 	ngOnInit(): void {
-		throw new Error('Method not implemented.');
+		// throw new Error('Method not implemented.');
 	}
 
 	private create_formGroup() {
 		this.formGroup = new FormGroup({
-			ListID: new FormControl('1', [ Validators.required ]),
-			AllRecords: new FormControl('1'),
-			SuccessRecords: new FormControl('1'),
-			Date: new FormControl(''),
-			actions: new FormControl(''),
-			CustomerID: new FormControl(''),
-			department: new FormControl(''),
-			add_date: new FormControl(''),
-			Last_attempt_date: new FormControl(''),
-			lock_call: new FormControl(''),
-			call_status: new FormControl(''),
-			call_duration: new FormControl(''),
-			info: new FormControl('')
+			Description: new FormControl(''),
+			Id: new FormControl('', [ Validators.required ]),
+			Name: new FormControl(''),
+			OperatorName: new FormControl('')
 		});
 	}
 
@@ -70,7 +61,8 @@ export class MySheetUplistsComponent implements OnInit {
 	update(): void {
 		if (this.formGroup.invalid) {
 			this.snackbar.open(' اطلاعات کامل نیست', null, { duration: 999 });
-			return;
+		} else if (this.formGroup.valid) {
+			this.snackbar.open('اطلاعات ثبت شد ', null, { duration: 999 });
 		}
 
 		// this.uplistsService.update(this.id, this.formGroup.value).subscribe((department: { [key: string]: any }) => {

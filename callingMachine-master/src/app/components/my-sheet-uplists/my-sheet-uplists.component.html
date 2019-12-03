@@ -2,7 +2,7 @@
   <h4 fxFlex>
     ویرایش لیست آپلودها
     <b>
-      {{ formGroup.get("department").value }}
+      {{ formGroup.get("Name").value }}
     </b>
   </h4>
   <div fxFlex>
@@ -14,8 +14,8 @@
               <input
                 type="number"
                 matInput
-                placeholder="کد لیست"
-                formControlName="ListID"
+                placeholder="توضیحات لیست"
+                formControlName="Description"
                 min="1"
                 max="20"
               />
@@ -27,8 +27,8 @@
               <input
                 type="text"
                 matInput
-                placeholder="کد اشتراک"
-                formControlName="CustomerID"
+                placeholder="شناسه"
+                formControlName="Id"
               />
             </mat-form-field>
           </div>
@@ -40,8 +40,8 @@
               <input
                 type="text"
                 matInput
-                placeholder="کاربر"
-                formControlName="info"
+                placeholder="نام لیست"
+                formControlName="Name"
               />
             </mat-form-field>
           </div>
@@ -51,13 +51,13 @@
               <input
                 type="text"
                 matInput
-                placeholder="تعداد کل رکوردها"
-                formControlName="AllRecords"
+                placeholder="نام اپراتور"
+                formControlName="OperatorName"
               />
             </mat-form-field>
           </div>
         </div>
-
+        <!--
         <div fxLayout="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
@@ -164,11 +164,11 @@
                 type="number"
                 matInput
                 placeholder="مدت زمان مکالمه"
-                formControlName="call_duration"
+                formControlName="CallDurationLimit"
               />
             </mat-form-field>
           </div>
-        </div>
+        </div> -->
       </div>
     </form>
   </div>

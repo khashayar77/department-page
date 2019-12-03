@@ -1,15 +1,22 @@
 export interface Department {
-	enable: number;
-	info: string;
-	id: number;
-	priority: number;
-	department: string;
+	Id: string;
+	Name: string;
+
 	Unit: string;
-	start_working_time: string;
-	end_working_time: string;
-	queue: string;
-	query_method: string;
-	call_more: number;
-	retry_time: string;
-	url_id: string;
+	Enable: string;
+
+	Priority: string;
+	StartWorkingTime: string;
+
+	EndWorkingTime: string;
+	NoneWorkingDayTableId: string;
+
+	Queue: string;
+	QueryMethod: string;
+
+	UrlId: string;
+	CallMore: string;
+
+	RetryTime: string;
+	CallDurationLimit: string;
 }

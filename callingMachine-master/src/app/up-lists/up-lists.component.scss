@@ -1,9 +1,12 @@
 table {
 	width: 100%;
-	text-align: center;
+	text-align: right;
+	td {
+		font-weight: bold;
+	}
 }
 
 table th {
-	text-align: center;
-	color: black;
+	text-align: right;
+	// color: black;
 }

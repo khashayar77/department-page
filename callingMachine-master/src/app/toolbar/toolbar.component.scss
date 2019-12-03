@@ -1,3 +1,18 @@
-.mat-icon-button {
-	margin-left: 30px;
+mat-toolbar {
+	#app-name {
+		font-weight: bold;
+		font-size: 16px;
+	}
+}
+mat-sidenav-content {
+	min-height: calc(100vh - 130px);
+
+	#main-container {
+		padding: 25px;
+	}
+}
+footer {
+	background: #333;
+	color: #eee;
+	padding: 23px;
 }
