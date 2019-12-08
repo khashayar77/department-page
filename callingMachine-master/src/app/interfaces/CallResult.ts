@@ -9,7 +9,6 @@ export interface CallResult {
 	LockCall: string;
 	Attempt: string;
 	CallStatus: string;
-	PickUp: string;
 	CallDuration: string;
 	Info1: string;
 	info2: string;

@@ -1,57 +1,41 @@
 <div fxLayout="column" fxLayoutGap="25px">
-  <h4 fxFlex>
-    ویرایش دپارتمان
-    <b>
-      {{ formGroup.get("Name").value }}
-    </b>
-  </h4>
+  <div id="toolbar" fxFlex fxLayout="column" fxLayoutGap="25px">
+    <h4 fxFlex>
+      ویرایش دپارتمان
+      <b> "{{ department.Name }}" </b>
+    </h4>
+    <div fxLayout="column">
+      <div fxLayout="row">
+        <div fxFlex="100px" class="label">{{ "Id" | translate }}:</div>
+        <div fxFlex class="value">{{ department.Id }}</div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="100px" class="label">{{ "Unit" | translate }}:</div>
+        <div fxFlex class="value">{{ department.Unit }}</div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="100px" class="label">{{ "Queue" | translate }}:</div>
+        <div fxFlex class="value">{{ department.Queue }}</div>
+      </div>
+    </div>
+  </div>
   <div fxFlex>
     <form [formGroup]="formGroup">
       <div fxLayout="column">
         <div fxFlex="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
-              <input
-                matInput
-                type="text"
-                placeholder="شناسه"
-                formControlName="Id"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50" id="box">
-            <mat-form-field>
-              <mat-label>فعال</mat-label>
-              <mat-select fxFlex="10" dir="rtl">
-                <mat-option *ngFor="let num of num" [value]="num">
-                  {{ num | activationStatus }}
+              <mat-label>{{ "status" | translate }}</mat-label>
+              <mat-select formControlName="Enable">
+                <mat-option *ngFor="let item of enability_options" [value]="item">
+                  {{ item | activationStatus }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-        </div>
-
-        <div fxFlex="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="اولویت"
-                formControlName="Priority"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="واحد"
-                formControlName="Unit"
-              />
+              <input type="text" matInput [placeholder]="'Priority' | translate" formControlName="Priority" />
             </mat-form-field>
           </div>
         </div>
@@ -59,23 +43,14 @@
         <div fxFlex="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="نام دپارتمان"
-                formControlName="Name"
-              />
+              <input type="text" matInput [placeholder]="'StartWorkingTime' | translate"
+                formControlName="StartWorkingTime" />
             </mat-form-field>
           </div>
-
           <div fxFlex="50">
             <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="ساعت شروع کار"
-                formControlName="StartWorkingTime"
-              />
+              <input type="text" matInput [placeholder]="'EndWorkingTime' | translate"
+                formControlName="EndWorkingTime" />
             </mat-form-field>
           </div>
         </div>
@@ -83,23 +58,13 @@
         <div fxFlex="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="ساعت پایان کار"
-                formControlName="EndWorkingTime"
-              />
+              <input type="text" matInput [placeholder]="'CallMore' | translate" formControlName="CallMore" />
             </mat-form-field>
           </div>
 
           <div fxFlex="50">
             <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="صف"
-                formControlName="Queue"
-              />
+              <input type="text" matInput [placeholder]="'RetryTime' | translate" formControlName="RetryTime" />
             </mat-form-field>
           </div>
         </div>
@@ -107,204 +72,21 @@
         <div fxFlex="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="UrlId"
-                formControlName="UrlId"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <mat-label>استراتژی</mat-label>
-              <mat-select fxFlex="10">
-                <mat-option>QueryMethod</mat-option>
-                <mat-option>QueryMethod</mat-option>
-                <mat-option>QueryMethod</mat-option>
-                <mat-option>QueryMethod</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxFlex="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="تعداد تماس بیشتر"
-                formControlName="CallMore"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="ساعت تماس مجدد"
-                formControlName="RetryTime"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-
-        <!--
-        <div fxFlex="row" fxLayoutGap="15px">
-          <div fxFlex="50" id="box">
-            <mat-form-field>
-              <mat-label>فعال</mat-label>
-              <mat-select fxFlex="10" dir="rtl">
-                <mat-option *ngFor="let num of num" [value]="num">
-                  {{ num | activationStatus }}
+              <mat-label>{{ "QueryMethod" | translate }}</mat-label>
+              <mat-select formControlName="QueryMethod">
+                <mat-option *ngFor="let item of query_methods$ | async" [value]="item.Id">
+                  {{item.FarsiName}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-
           <div fxFlex="50">
             <mat-form-field>
-              <input
-                type="number"
-                matInput
-                placeholder="اولویت"
-                formControlName="Priority"
-                min="1"
-                max="10"
-              />
+              <input type="text" matInput [placeholder]="'CallDurationLimit' | translate"
+                formControlName="CallDurationLimit" />
             </mat-form-field>
           </div>
         </div>
-
-        <div fxFlex="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="number"
-                matInput
-                placeholder="روز های غیرکاری"
-                formControlName="NoneWorkingDayTableId"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="number"
-                matInput
-                placeholder="مدت زمان مکالمه"
-                formControlName="CallDurationLimit"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxFlex="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="time"
-                matInput
-                placeholder="ساعت شروع کار"
-                formControlName="StartWorkingTime"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="time"
-                matInput
-                placeholder="ساعت پایان کار"
-                formControlName="EndWorkingTime"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxFlex="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder=" دپارتمان (disabled)"
-                disabled
-                value="دپارتمان"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="(disabled)"
-                disabled
-                value="صف"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxFlex="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="(disabled)"
-                disabled
-                value="UrlId"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <mat-label>استراتژی</mat-label>
-              <mat-select fxFlex="10">
-                <mat-option>QueryMethod</mat-option>
-                <mat-option>QueryMethod</mat-option>
-                <mat-option>QueryMethod</mat-option>
-                <mat-option>QueryMethod</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxFlex="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="number"
-                matInput
-                placeholder="تعداد تماس بیشتر"
-                formControlName="CallMore"
-                min="1"
-                max="30"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder=" مدت زمان تماس مجدد"
-                formControlName="retry_time"
-              />
-            </mat-form-field>
-          </div>
-        </div> -->
       </div>
     </form>
   </div>
@@ -312,13 +94,7 @@
     <button fxFlex type="button" (click)="cancel()" mat-button color="primary">
       {{ "cancel" | translate }}
     </button>
-    <button
-      fxFlex
-      type="button"
-      (click)="update()"
-      mat-raised-button
-      color="primary"
-    >
+    <button fxFlex type="button" (click)="update()" mat-raised-button color="primary">
       {{ "save" | translate }}
     </button>
   </div>

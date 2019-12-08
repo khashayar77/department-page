@@ -1,13 +1,13 @@
 <mat-toolbar fxLayout="row" color="primary">
   <div id="app-name" fxFlex="nogrow">
-    سامانه مدیریت تماس
+    {{ "app name" | translate }}
   </div>
   <div fxFlex="grow" fxLayout="row" fxLayoutAlign="center">
     <button
       fxFlex="nogrow"
       mat-button
       routerLink="/dashboard"
-      routerLinkActive="router-link-active"
+      routerLinkActive="active"
     >
       {{ "Dashboard" | translate }}
     </button>
@@ -15,7 +15,7 @@
       fxFlex="nogrow"
       mat-button
       routerLink="/uploadList"
-      routerLinkActive="router-link-active"
+      routerLinkActive="active"
     >
       {{ "Upload List" | translate }}
     </button>
@@ -23,7 +23,7 @@
       fxFlex="nogrow"
       mat-button
       routerLink="/departments"
-      routerLinkActive="router-link-active"
+      routerLinkActive="active"
     >
       {{ "Departments" | translate }}
     </button>
@@ -31,7 +31,7 @@
       fxFlex="nogrow"
       mat-button
       routerLink="/callingLists"
-      routerLinkActive="router-link-active"
+      routerLinkActive="active"
     >
       {{ "Calling Lists" | translate }}
     </button>
@@ -39,7 +39,7 @@
       fxFlex="nogrow"
       mat-button
       [routerLink]="['/UpLists']"
-      routerLinkActive="router-link-active"
+      routerLinkActive="active"
     >
       {{ "UpLists" | translate }}
     </button>
@@ -53,7 +53,7 @@
     aria-label="Button that displays a tooltip when focused or hovered over"
     matTooltip="خروج"
     (click)="logout()"
-    routerLinkActive="router-link-active"
+    routerLinkActive="active"
   >
     <mat-icon>exit_to_app</mat-icon>
   </button>
@@ -70,6 +70,12 @@
 
 <footer>
   <div fxLayout="row" fxLayoutAlign="center">
-    <div fxFlex="0 0 auto">Copyright: shatel.ir</div>
+    <div  fxFlex="100 auto" fxLayoutAlign="center">Copyright: shatel.ir</div>
+
+    <div fxLayout="row" fxLayoutAlign="space-evenly end">
+      <mat-icon class="icon">
+        settings_phone
+      </mat-icon>
+    </div>
   </div>
 </footer>

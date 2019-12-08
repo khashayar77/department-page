@@ -24,7 +24,6 @@ export class AuthService {
 		}
 
 		this.user$.subscribe((user) => {
-			debugger;
 			if (user) localStorage.setItem(environment.LOCAL_STORAGE_KEY, JSON.stringify(user));
 			else localStorage.removeItem(environment.LOCAL_STORAGE_KEY);
 		});
@@ -43,7 +42,6 @@ export class AuthService {
 			.post<string>(`${environment.server_ip}/login`, { username, password, returnSecureToken: true })
 			.pipe(
 				map((token) => {
-					debugger;
 					return this.handleAuthentication(token);
 				})
 			);

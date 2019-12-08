@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatIconModule, MatToolbarModule } from '@angular/material';
+import { MatIconModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -20,9 +20,10 @@ describe('ToolbarComponent', () => {
 					MatToolbarModule,
 					RouterModule,
 					HttpClientModule,
-					RouterTestingModule
+					RouterTestingModule,
+					MatSidenavModule
 				],
-				declarations: [ ToolbarComponent ]
+				declarations: [ ToolbarComponent, MatSidenavModule ]
 			}).compileComponents();
 		})
 	);

@@ -1,15 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DepartmentsComponent } from './department-list.component';
-import { MatIconModule, MatTableModule, MatSnackBarModule } from '@angular/material';
+import {
+	MatIconModule,
+	MatTableModule,
+	MatSnackBarModule,
+	MatTooltipModule,
+	MatCardContent,
+	MatCardModule,
+	MatBottomSheetModule
+} from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
+import { DepartmentListComponent } from './department-list.component';
 
-describe('DepartmentsComponent', () => {
-	let component: DepartmentsComponent;
-	let fixture: ComponentFixture<DepartmentsComponent>;
+describe('DepartmentListComponent', () => {
+	let component: DepartmentListComponent;
+	let fixture: ComponentFixture<DepartmentListComponent>;
 
 	beforeEach(
 		async(() => {
@@ -22,15 +30,18 @@ describe('DepartmentsComponent', () => {
 					TranslateModule.forRoot(),
 					RouterModule,
 					HttpClientModule,
-					MatSnackBarModule
+					MatSnackBarModule,
+					MatTooltipModule,
+					MatCardModule,
+					MatBottomSheetModule
 				],
-				declarations: [ DepartmentsComponent ]
+				declarations: [ DepartmentListComponent ]
 			}).compileComponents();
 		})
 	);
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(DepartmentsComponent);
+		fixture = TestBed.createComponent(DepartmentListComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

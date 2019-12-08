@@ -3,13 +3,15 @@
     <mat-card color="primary">
       <mat-card-content>
         <div fxLayout="column">
-          <div fxFlex="row" fxLayoutAlign="center">
-            <mat-card-header>گزارش تماس های دیروز</mat-card-header>
-            <mat-icon matTooltip="تعداد تماس های ناموفق دیروز">note</mat-icon>
+          <div fxLayout="row" fxLayoutAlign="end">
+            <mat-icon [matTooltip]="'report' | translate">note</mat-icon>
           </div>
-          <br>
           <div fxFlex="row" fxLayoutAlign="center">
-              <h4>448</h4>
+            <mat-card-header>{{ "Report" | translate }}</mat-card-header>
+          </div>
+          <br />
+          <div fxFlex="row" fxLayoutAlign="center">
+            <h4 class="B">448</h4>
           </div>
 
           <form fxFlex="50px" fxFlexAlign="center center"></form>
@@ -20,28 +22,32 @@
 
   <div fxFlex="500px">
     <mat-card color="primary">
-      <mat-card-title fxLayout="row" fxLayoutAlign="center center">تعداد تماس های باقی مانده </mat-card-title>
+      <mat-card-title fxLayout="row" fxLayoutAlign="center center">
+        {{ "Null calls" | translate }}
+      </mat-card-title>
       <mat-card-content>
         <mat-list>
-            <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
 
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <mat-list-item>qm-cancel</mat-list-item>
-          <h4 class=X>448</h4><br>
-        </div>
-        <mat-divider></mat-divider>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-list-item>qm-cancel</mat-list-item>
+            <h4 class="X">448</h4>
+            <br />
+          </div>
+          <mat-divider></mat-divider>
 
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <mat-list-item>qm-Changeline</mat-list-item>
-          <h4 class=X>338</h4><br>
-        </div>
-        <mat-divider></mat-divider>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-list-item>qm-Changeline</mat-list-item>
+            <h4 class="X">338</h4>
+            <br />
+          </div>
+          <mat-divider></mat-divider>
 
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <mat-list-item>qm-delivery</mat-list-item>
-          <h4 class=X>778</h4><br>
-        </div>
-
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-list-item>qm-delivery</mat-list-item>
+            <h4 class="X">778</h4>
+            <br />
+          </div>
         </mat-list>
       </mat-card-content>
     </mat-card>
@@ -52,14 +58,18 @@
       <mat-card color="primary">
         <mat-card-content>
           <div fxLayout="column">
-            <div fxFlex="row" fxLayoutAlign="center">
-              <mat-card-header>تعداد کل تماس ها</mat-card-header>
-              <mat-icon matTooltip="تعداد تماس های ناموفق دیروز">
-                settings_voice</mat-icon>
+            <div fxLayout="row" fxLayoutAlign="end start">
+              <mat-icon [matTooltip]="'Call Result' | translate">
+                settings_voice</mat-icon
+              >
             </div>
-            <br>
             <div fxFlex="row" fxLayoutAlign="center">
-              <h4>448</h4>
+              <mat-card-header>{{ "Call Result" | translate }}</mat-card-header>
+            </div>
+
+            <br />
+            <div fxFlex="row" fxLayoutAlign="center">
+              <h4 class="B">448</h4>
             </div>
 
             <form fxFlex="50px" fxFlexAlign="center center"></form>

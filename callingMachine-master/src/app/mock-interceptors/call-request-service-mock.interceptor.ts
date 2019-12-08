@@ -11,14 +11,18 @@ import { CallRequsetResponse } from '../mocks/CallRequsetResponse.mock-data';
 
 export class CallRequestServiceMockInterceptor implements HttpInterceptor {
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		if (request.url.endsWith('/callrequests')) {
+		if (request.url.includes('/PhoneNumbers/') && request.method.toLocaleLowerCase() == 'get') {
+			const id = request.url.split('/').pop();
+			const selected_callHistory = CallRequsetResponse.Result.find((i) => i.CustomerId == id);
+			return of(new HttpResponse({ status: 200, body: { Result: selected_callHistory }, url: request.url }));
+			//گرفتن لیست
+		} else if (request.url.includes('/PhoneNumbers/') && request.method.toLocaleLowerCase() == 'get') {
 			return of(new HttpResponse({ status: 200, body: CallRequsetResponse, url: request.url }));
-		}
-		// tslint:disable-next-line: triple-equals
-		if (request.url.includes('/callrequests/') && request.method.toLocaleLowerCase() == 'get') {
-			// tslint:disable-next-line: no-debugger
-			debugger;
-			return of(new HttpResponse({ status: 200, body: { Result: CallRequsetResponse }, url: request.url }));
+		} else if (request.url.includes('/callHistory/') && request.method.toLocaleLowerCase() == 'patch') {
+			const id = request.url.split('/').pop();
+
+			const selected_callHistory = CallRequsetResponse.Result.find((i) => i.CustomerId == id);
+			return of(new HttpResponse({ status: 200, body: { Result: selected_callHistory }, url: request.url }));
 		} else {
 			return next.handle(request);
 		}

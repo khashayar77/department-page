@@ -1,7 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
-import { MatCardModule, MatFormFieldModule, MatIconModule } from '@angular/material';
+import {
+	MatCardModule,
+	MatFormFieldModule,
+	MatIconModule,
+	MatTooltipModule,
+	MatDividerModule,
+	MatListModule
+} from '@angular/material';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('DashboardComponent', () => {
 	let component: DashboardComponent;
@@ -10,7 +18,16 @@ describe('DashboardComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				imports: [ MatCardModule, MatFormFieldModule, MatIconModule, MatCardModule ],
+				imports: [
+					MatCardModule,
+					MatFormFieldModule,
+					MatIconModule,
+					MatCardModule,
+					TranslateModule.forRoot(),
+					MatTooltipModule,
+					MatDividerModule,
+					MatListModule
+				],
 				declarations: [ DashboardComponent ]
 			}).compileComponents();
 		})

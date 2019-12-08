@@ -1,67 +1,76 @@
 <div fxFlex="row" fxLayoutGap="25px" fxLayoutAlign="start start">
-  <div fxFlex="0 0 15%" fxLayout="column" dir="rtl" fxLayoutGap="25px">
+  <div fxFlex="0 0 15%" fxLayout="column" fxLayoutGap="25px">
     <h4 class="header" fxFlex>
-      {{ "Call Search" | translate }}
+      {{ "Customer Search" | translate }}
     </h4>
 
     <mat-card fxFlex>
       <form [formGroup]="filterForm">
         <div>
-          <mat-form-field class="example-full-width">
+          <mat-form-field>
             <input
               matInput
-              formControlName="IdFilter"
-              placeholder="کد اشتراک"
+              formControlName="CustomerId"
+              [placeholder]="'CustomerId' | translate"
+              minlength="14"
               maxlength="14"
             />
           </mat-form-field>
         </div>
         <div>
-          <mat-form-field class="example-full-width">
+          <mat-form-field>
             <input
               matInput
-              formControlName="NumberFilter"
-              placeholder="شماره تماس"
+              formControlName="Number"
+              [placeholder]="'PhoneNumber' | translate"
+              minlength="11"
               maxlength="11"
             />
           </mat-form-field>
         </div>
         <div>
-          <mat-form-field class="example-full-width">
-            <mat-label>دپارتمان</mat-label>
-            <mat-select fxFlex="10">
-              <mat-option *ngFor="let num of num" [value]="num.value" dir="rtl">
-                <input
-                  matInput
-                  formControlName="DepartmentFilter"
-                  placeholder="دپارتمان"
-                />
-                {{ num.viewValue }}
+          <mat-form-field>
+            <mat-label>{{ "Department" | translate }}</mat-label>
+            <mat-select formControlName="Department">
+              <mat-option
+                *ngFor="let item of departmets$ | async"
+                [value]="item.Id"
+              >
+                {{ item.Name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>{{ "Numbers List" | translate }}</mat-label>
+            <mat-select formControlName="Department">
+              <mat-option
+                *ngFor="let item of uploads_list$ | async"
+                [value]="item.Id"
+              >
+                {{ item.Name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
 
-        <div>
-          <mat-form-field class="example-full-width">
-            <input
-              matInput
-              formControlName="AddDateFilter"
-              [matDatepicker]="picker"
-              placeholder="تاریخ ورود اطلاعات"
-            />
+        <!-- <div>
+          <mat-form-field>
+            <input matInput formControlName="AddDate" [matDatepicker]="picker" placeholder="تاریخ ورود اطلاعات" />
             <mat-datepicker-toggle matSuffix [for]="picker">
               <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
             </mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-        </div>
+        </div> -->
+
         <div>
           <mat-form-field>
             <mat-select
-              formControlName="CallStatusFilter"
+              formControlName="CallStatus"
               multiple
-              placeholder="وضعیت تماس"
+              [placeholder]="'CallStatus' | translate"
             >
               <mat-option
                 *ngFor="let status of callStatusList"
@@ -91,130 +100,158 @@
       {{ "show Calls Status" | translate }}
     </h4>
     <mat-card fxFlex>
-      <table mat-table [dataSource]="dataSource" matSort>
-        <!-- CustomerId Column -->
+      <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="CustomerId">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "CustomerId" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.CustomerId }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.CustomerId }}
+          </td>
         </ng-container>
 
-        <!-- PhoneNumber Column -->
         <ng-container matColumnDef="PhoneNumber">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "PhoneNumber" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.PhoneNumber }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.PhoneNumber }}
+          </td>
         </ng-container>
 
-        <!-- DepartmentName Column -->
         <ng-container matColumnDef="DepartmentName">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "DepartmentName" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.Department }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.DepartmentName }}
+          </td>
         </ng-container>
 
-        <!-- UrlId Column -->
+        <ng-container matColumnDef="urlId">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ "urlId" | translate }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.urlId }}
+          </td>
+        </ng-container>
+
         <ng-container matColumnDef="UrlId">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "UrlId" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.UrlId }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ "UrlId" | translate }}
+          </td>
         </ng-container>
 
-        <!-- AddDate Column -->
         <ng-container matColumnDef="AddDate">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "AddDate" | translate }}
           </th>
           <td mat-cell *matCellDef="let element">
-            {{ element.Add_Date | date: "y/M/d" }}
+            {{ element.AddDate }}
           </td>
         </ng-container>
-        <!-- RetryTime Column -->
+
+        <ng-container matColumnDef="LastAttemptDate">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ "LastAttemptDate" | translate }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.LastAttemptDate }}
+          </td>
+        </ng-container>
+
         <ng-container matColumnDef="RetryTime">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "RetryTime" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.RetryTime }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.RetryTime }}
+          </td>
         </ng-container>
-        <!-- LockCall Column -->
+
         <ng-container matColumnDef="LockCall">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "LockCall" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.LockCall }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.LockCall }}
+          </td>
         </ng-container>
-        <!-- Attempt Column -->
+
         <ng-container matColumnDef="Attempt">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "Attempt" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.Attempt }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.Attempt }}
+          </td>
         </ng-container>
-        <!-- CallStatus Column -->
+
         <ng-container matColumnDef="CallStatus">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "CallStatus" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.CallStatus }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.CallStatus }}
+          </td>
         </ng-container>
 
-        <!-- qID column -->
-        <ng-container matColumnDef="qID">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            {{ "qID" | translate }}
-          </th>
-          <td mat-cell *matCellDef="let element">{{ element.qID }}</td>
-        </ng-container>
-
-        <!-- CallDuration Column -->
         <ng-container matColumnDef="CallDuration">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "CallDuration" | translate }}
           </th>
           <td mat-cell *matCellDef="let element">
             {{ element.CallDuration }}
           </td>
         </ng-container>
-        <!-- Info1 Column -->
+
         <ng-container matColumnDef="Info1">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <th mat-header-cell *matHeaderCellDef>
             {{ "Info1" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.Info1 }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.Info1 }}
+          </td>
         </ng-container>
 
-        <ng-container matColumnDef="Info2">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            {{ "Info2" | translate }}
+        <ng-container matColumnDef="info2">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ "info2" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.Info2 }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.info2 }}
+          </td>
         </ng-container>
 
-        <ng-container matColumnDef="Info3">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            {{ "Info3" | translate }}
+        <ng-container matColumnDef="info3">
+          <th mat-header-cell *matHeaderCellDef>
+            {{ "info3" | translate }}
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.Info3 }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.info3 }}
+          </td>
         </ng-container>
+
         <!-- action Column -->
         <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef>{{ "action" | translate }}</th>
+          <th mat-header-cell *matHeaderCellDef>
+            {{ "action" | translate }}
+          </th>
           <td mat-cell *matCellDef="let element">
             <button
               (click)="remove(element)"
               mat-icon-button
-              matTooltip="حذف"
-              aria-label="Example icon-button with a delete icon"
+              [matTooltip]="'remove phone number' | translate"
             >
               <mat-icon>delete</mat-icon>
             </button>
             <button
               mat-icon-button
-              matTooltip="نمایش جزئیات"
+              [matTooltip]="'Details' | translate"
               (click)="openBottomSheet(element)"
             >
               <mat-icon>remove_red_eye</mat-icon>
@@ -226,14 +263,15 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
-      <mat-paginator
+      <!--
+       <mat-paginator
         [length]="total"
         [pageIndex]="pageNo"
         [pageSize]="1"
         [pageSizeOptions]="[10, 25, 100]"
         (page)="pageChanged($event)"
       >
-      </mat-paginator>
+      </mat-paginator>  -->
     </mat-card>
   </div>
 </div>

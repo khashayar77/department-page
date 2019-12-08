@@ -57,9 +57,9 @@ export class DepartmentDetailComponent implements OnInit {
 			return;
 		}
 
-		this.departmentService.update(this.id, this.formGroup.value).subscribe((resp) => {
-			this.snackbar.open('اطلاعات ثبت شد ', null, { duration: 999 });
-			this.formGroup.patchValue(resp);
-		});
+		// this.departmentService.update(this.id, this.formGroup.value).subscribe((resp) => {
+		// 	this.snackbar.open('اطلاعات ثبت شد ', null, { duration: 999 });
+		// 	this.formGroup.patchValue(resp);
+		// });
 	}
 }

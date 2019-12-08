@@ -12,7 +12,10 @@ export interface Department {
 	NoneWorkingDayTableId: string;
 
 	Queue: string;
-	QueryMethod: string;
+	QueryMethod: {
+		EnglishName: string;
+		FarsiName: string;
+	};
 
 	UrlId: string;
 	CallMore: string;

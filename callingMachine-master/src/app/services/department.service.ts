@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 	providedIn: 'root'
 })
 export class DepartmentService {
+	user$: any;
 	constructor(private http: HttpClient) {}
 
 	get(id: string): Observable<Department> {
@@ -17,10 +18,8 @@ export class DepartmentService {
 			.pipe(map((i) => i.Result));
 	}
 
-	update(id: string, model: Partial<Department>): Observable<Department> {
-		return this.http
-			.patch<{ Result: Department }>(`${environment.server_ip}/department/${id}`, model)
-			.pipe(map((i) => i.Result));
+	update(model: Department): Observable<Department> {
+		return this.http.put<Department>(`${environment.server_ip}/department`, model);
 	}
 
 	list() {

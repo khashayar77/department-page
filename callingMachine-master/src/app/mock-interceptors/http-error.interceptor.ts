@@ -12,8 +12,6 @@ import { MOCK_admin_user, MOCK_operator_user } from '../mocks/roles';
 
 export class AuthServiceMockInterceptor implements HttpInterceptor {
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		debugger;
-
 		if (request.url.endsWith('/login')) {
 			if (request.body.username == 'admin') {
 				return of(new HttpResponse({ status: 200, body: MOCK_admin_user, url: request.url }));

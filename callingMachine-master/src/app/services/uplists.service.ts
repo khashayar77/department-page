@@ -34,8 +34,7 @@ export class UplistsService {
 		return this.http.get<UpLists[]>(`${environment.server_ip}/NumbersLists`, {});
 	}
 
-	// remove(UpListsID: string): Observable<void> {
-	// 	debugger;
-	// 	return this.http.delete<void>(`${environment.server_ip}/NumbersList/${UpListsID}`);
-	// }
+	remove(UpListsID: string): Observable<void> {
+		return this.http.delete<void>(`${environment.server_ip}/NumbersList/${UpListsID}`);
+	}
 }

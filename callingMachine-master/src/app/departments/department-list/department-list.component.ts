@@ -10,7 +10,7 @@ import { Descriptionservice } from 'src/app/services/description.service';
 @Component({
 	selector: 'department-list',
 	templateUrl: './department-list.component.html',
-	styleUrls: [ './department-list.component.scss' ]
+	styleUrls: ['./department-list.component.scss']
 })
 export class DepartmentListComponent implements OnInit {
 	dataSource = new MatTableDataSource();
@@ -26,17 +26,17 @@ export class DepartmentListComponent implements OnInit {
 	) {
 		this.descriptions = this.descriptionservice.description;
 		this.displayedColumns = [
-			'Id',
-			'Name',
-			'Unit',
 			'Enable',
+			'Id',
+			'Unit',
+			'Name',
 			'Priority',
 			'StartWorkingTime',
 			'EndWorkingTime',
-			'NoneWorkingDayTableId',
+			// 'NoneWorkingDayTableId',
 			'Queue',
 			'QueryMethod',
-			'UrlId',
+			// 'UrlId',
 			'CallMore',
 			'RetryTime',
 			'CallDurationLimit',
@@ -53,16 +53,16 @@ export class DepartmentListComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		// this.dataSource.paginator = this.paginator;
 	}
 
 	openBottomSheet(department: Department) {
-		this.buttomSheet.open(DepartmentUpdateComponent, {
+		const bs_ref = this.buttomSheet.open(DepartmentUpdateComponent, {
 			data: {
 				department
 			}
 		});
-		// TODO:
-		this.getList();
+		bs_ref.afterDismissed().subscribe(department => {
+			this.getList();
+		})
 	}
 }

@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 const dictionatry = {
-	1: 'فعال',
-	2: 'غیر فعال'
+	0: 'فعال',
+	1: 'غیر فعال'
 };
 
 @Pipe({ name: 'activationStatus' })

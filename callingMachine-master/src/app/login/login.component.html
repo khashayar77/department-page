@@ -1,30 +1,36 @@
-<div fxLayout="row" fxLayoutAlign="center center" class="container">
-  <mat-card fxFlex="550px">
+<div fxLayout="row" class="container">
+  <div fxFlex="1 1 auto" class="wallpaper">
+    <img />
+  </div>
+  <mat-card fxFlex="550px" fxLayoutAlign="center center">
     <mat-card-content>
-      <div fxLayout="column" dir="rtl">
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="25px">
         <img
           fxFlex="50px"
           fxFlexAlign="center"
           src="http://www.shatel.ir/file/2016/10/shatel.png"
           alt="Avatar"
         />
+        <div id="app-name" fxFlex>
+          {{ "app name" | translate }}
+        </div>
 
-        <form fxFlex [formGroup]="formGroup">
-          <div fxLayout="row wrap" fxLayoutAlign="center center">
-            <mat-form-field fxFlex="70">
+        <form fxFlexFill [formGroup]="formGroup">
+          <div fxLayout="column">
+            <mat-form-field fxFlex>
               <input
                 type="text"
                 matInput
-                placeholder="نام کاربری..."
+                [placeholder]="'username' | translate"
                 formControlName="username"
               />
             </mat-form-field>
 
-            <mat-form-field fxFlex="70">
+            <mat-form-field fxFlex>
               <input
                 type="password"
                 matInput
-                placeholder="رمز عبور..."
+                [placeholder]="'password' | translate"
                 formControlName="password"
               />
               <mat-error *ngIf="formGroup.get('password').invalid">{{
@@ -33,18 +39,19 @@
             </mat-form-field>
           </div>
         </form>
+
+        <button
+          [disabled]="this.formGroup.invalid"
+          fxFlexFill
+          type="button"
+          (click)="submit()"
+          mat-raised-button
+          color="primary"
+        >
+          {{ "login" | translate }}
+        </button>
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button
-        type="button"
-        (click)="submit()"
-        mat-raised-button
-        color="primary"
-      >
-        {{ "login" | translate }}
-      </button>
-    </mat-card-actions>
 
     <button mat-button type="button" color="warn" *ngIf="">
       {{ "Logout" | translate }}

@@ -11,7 +11,10 @@ import {
 	MatPaginatorModule,
 	MatSnackBarModule,
 	MatFormFieldControl,
-	MatInputModule
+	MatInputModule,
+	MatCardModule,
+	MatTooltipModule,
+	MatBottomSheetModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -43,7 +46,11 @@ describe('CallingListsComponent', () => {
 					TranslateModule.forRoot(),
 					MatFormFieldModule,
 					MatInputModule,
-					BrowserAnimationsModule
+					BrowserAnimationsModule,
+					MatCardModule,
+					MatIconModule,
+					MatTooltipModule,
+					MatBottomSheetModule
 				],
 				declarations: [ CallingListsComponent ]
 			}).compileComponents();

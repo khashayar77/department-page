@@ -41,6 +41,23 @@
             </td>
           </ng-container>
 
+          <!-- <ng-container matColumnDef="IssueDate	">
+            <th
+              mat-header-cell
+              [matTooltip]="descriptions.IssueDate"
+              *matHeaderCellDef
+            >
+              {{ "IssueDate	" | translate }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              [matTooltip]="descriptions.IssueDate"
+            >
+              {{ element.IssueDate }}
+            </td>
+          </ng-container> -->
+
           <ng-container matColumnDef="Id">
             <th
               mat-header-cell
@@ -106,23 +123,6 @@
               [matTooltip]="descriptions.AllRecords"
             >
               {{ element.AllRecords }}
-            </td>
-          </ng-container> -->
-
-          <!-- <ng-container matColumnDef="IssueDate	">
-            <th
-              mat-header-cell
-              [matTooltip]="descriptions.IssueDate"
-              *matHeaderCellDef
-            >
-              {{ "IssueDate	" | translate }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              [matTooltip]="descriptions.IssueDate"
-            >
-              {{ element.IssueDate }}
             </td>
           </ng-container> -->
 
@@ -254,19 +254,19 @@
               {{ "action" | translate }}
             </th>
             <td mat-cell *matCellDef="let element">
-              <!-- <button
-            mat-icon-button
-            aria-label="Example icon-button with a delete icon"
-            (click)="remove(element)"
-            matTooltip="حذف"
-          >
-            <mat-icon>delete</mat-icon>
-          </button> -->
+              <button
+                mat-icon-button
+                aria-label="Example icon-button with a delete icon"
+                (click)="remove(element)"
+                [matTooltip]="'delete' | translate"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
 
               <button
                 mat-icon-button
                 aria-label="exmaple icon-button with a get_app icon"
-                matTooltip="نمایش جزئیات"
+                [matTooltip]="'Details' | translate"
                 (click)="openBottomSheet(element)"
               >
                 <mat-icon>remove_red_eye</mat-icon>

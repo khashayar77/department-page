@@ -1,5 +1,5 @@
 export interface CallRequest {
-	ID: string;
+	Id: string;
 	CustomerId: string;
 	PhoneNumber: string;
 	DepartmentName: string;

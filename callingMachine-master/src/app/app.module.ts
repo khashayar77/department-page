@@ -47,6 +47,7 @@ import { DepartmentServiceMockInterceptore } from './mock-interceptors/departmen
  */
 import { DepartmentService } from './services/department.service';
 import { DepartmentsModule } from './departments/departments.module';
+import { DashboardService } from './services/dashboard.service';
 import { CustomMatPaginatorIntl } from './departments/department-list/CustomMatPaginatorIntl ';
 import { TokenInterceptorInterceptor } from './interceptors/token-header.interceptor';
 
@@ -104,31 +105,32 @@ export function HttpLoaderFactory(http: HttpClient) {
 	providers: [
 		LogedInGuard,
 		DepartmentService,
+		DashboardService,
 		MatPaginatorIntl,
 		// {
 		// 	provide: HTTP_INTERCEPTORS,
 		// 	useClass: HttpErrorInterceptor,
 		// 	multi: true
 		// },
-		{
-			provide: MatPaginatorIntl,
-			useClass: CustomMatPaginatorIntl
-		},
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: AuthServiceMockInterceptor,
-			multi: true
-		},
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: CallRequestServiceMockInterceptor,
-			multi: true
-		},
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: UpListsServiceMockInterceptore,
-			multi: true
-		},
+		// {
+		// 	provide: MatPaginatorIntl,
+		// 	useClass: CustomMatPaginatorIntl
+		// },
+		// {
+		// 	provide: HTTP_INTERCEPTORS,
+		// 	useClass: AuthServiceMockInterceptor,
+		// 	multi: true
+		// },
+		// {
+		// 	provide: HTTP_INTERCEPTORS,
+		// 	useClass: CallRequestServiceMockInterceptor,
+		// 	multi: true
+		// },
+		// {
+		// 	provide: HTTP_INTERCEPTORS,
+		// 	useClass: UpListsServiceMockInterceptore,
+		// 	multi: true
+		// },
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: TokenInterceptorInterceptor,

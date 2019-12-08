@@ -7,6 +7,10 @@ import { MatSnackBar } from '@angular/material';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MySheetCallingListComponent } from '../components/my-sheet-calling-list/my-sheet-calling-list.component';
+import { Department } from '../interfaces/department.interface';
+import { Observable } from 'rxjs';
+import { DepartmentService, UplistsService } from '../services';
+import { UpLists } from '../interfaces/UpLists';
 
 export interface Num {
 	value: string;
@@ -19,61 +23,53 @@ export interface Num {
 })
 export class CallingListsComponent {
 	callStatusList: number[] = [ 1, 2 ];
-	num: Num[] = [ { value: '1', viewValue: '1' }, { value: '2', viewValue: '2' }, { value: '2', viewValue: '2' } ];
+	departmets$: Observable<Department[]>;
+	uploads_list$: Observable<UpLists[]>;
 	current_page: number;
 	total: number;
+
 	displayedColumns: string[];
-	@ViewChild(MatPaginator, { static: true })
-	paginator: MatPaginator;
+	// @ViewChild(MatPaginator, { static: true })
+	// paginator: MatPaginator;
 	dataSource = new MatTableDataSource<CallRequest>([]);
-	pageNo: number;
+	// pageNo: number;
 
 	constructor(
 		private callingService: CallingService,
+		private departmentService: DepartmentService,
+		private uplistsService: UplistsService,
 		private matSnackBar: MatSnackBar,
 		private bottomSheet: MatBottomSheet
 	) {
+		this.departmets$ = this.departmentService.list();
+		this.uploads_list$ = this.uplistsService.list();
 		this.displayedColumns = [
 			'CustomerId',
 			'PhoneNumber',
 			'DepartmentName',
 			'UrlId',
 			'AddDate',
+			'LastAttemptDate',
 			'RetryTime',
 			'LockCall',
 			'Attempt',
 			'CallStatus',
-			'qID',
 			'CallDuration',
 			'Info1',
-			'Info2',
-			'Info3',
+			'info2',
+			'info3',
 			'action'
 		];
 		this.current_page = 0;
-		this.search({ page_no: 0 });
-		this.getList();
+		this.search();
 	}
-	// form group
 	filterForm = new FormGroup({
-		IdFilter: new FormControl(),
-		NumberFilter: new FormControl(),
-		DepartmentFilter: new FormControl(),
-		AddDateFilter: new FormControl(),
-		CallStatusFilter: new FormControl()
+		Number: new FormControl(),
+		CustomerId: new FormControl(),
+		Department: new FormControl(),
+		NumbersList: new FormControl(),
+		CallStatus: new FormControl()
 	});
-
-	private getList(pageNo: number = 0, pageSize: number = 1) {
-		this.callingService.list(pageNo, pageSize).subscribe((response) => {
-			this.total = response.total;
-			this.pageNo = response.page_no;
-			this.dataSource.data = response.Result;
-		});
-	}
-
-	ngOnInit() {
-		this.dataSource.paginator = this.paginator;
-	}
 
 	openBottomSheet(callRequest: CallRequest) {
 		this.bottomSheet.open(MySheetCallingListComponent, {
@@ -81,53 +77,36 @@ export class CallingListsComponent {
 				callRequest
 			}
 		});
-
-		//TODO:
-		this.getList();
 	}
 
-	pageChanged(event: PageEvent) {
-		this.getList(event.pageIndex, event.pageSize);
-	}
+	// pageChanged(event: PageEvent) {
+	// 	this.getList(event.pageIndex, event.pageSize);
+	// }
 
 	remove(item: CallRequest) {
-		debugger;
-		this.callingService.remove(item.ID).subscribe((res) => {
-			debugger;
+		this.callingService.remove(item.Id).subscribe((res) => {
+			this.matSnackBar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
+			this.search();
 		});
-		this.matSnackBar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
 	}
 
-	search({ page_no } = {} as any) {
+	search() {
+		debugger;
 		this.callingService
 			.query({
 				criteria: this.filterForm.value,
-				pageNo: page_no || 0
+				pageNo: this.current_page
 			})
 			.subscribe((res) => {
-				this.dataSource.data = res.Result;
-				this.current_page = res.page_no;
-				this.total = res.total_items;
+				debugger;
+				// TODO:
+				this.dataSource.data = res;
+				this.current_page = 1;
+				this.total = 100;
 			});
 	}
 	// page_change(e: PageEvent) {
 	//   e.
 	//   this.search({ page_no: ++this.current_page });
 	// }
-
-	get ID() {
-		return this.filterForm.get('IdFilter');
-	}
-	get Number() {
-		return this.filterForm.get('NumberFilter');
-	}
-	get Department() {
-		return this.filterForm.get('DepartmentFilter');
-	}
-	get AddDate() {
-		return this.filterForm.get('AddDateFilter');
-	}
-	get CallStatus() {
-		return this.filterForm.get('CallStatusFilter');
-	}
 }

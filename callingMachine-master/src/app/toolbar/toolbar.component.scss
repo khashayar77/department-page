@@ -3,6 +3,11 @@ mat-toolbar {
 		font-weight: bold;
 		font-size: 16px;
 	}
+	.active {
+		border-bottom: 3px solid #f7da02;
+		border-radius: 0;
+		height: 63px;
+	}
 }
 mat-sidenav-content {
 	min-height: calc(100vh - 130px);
@@ -15,4 +20,8 @@ footer {
 	background: #333;
 	color: #eee;
 	padding: 23px;
+}
+
+.icon {
+	font-size: 35px;
 }

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DepartmentUpdateComponent } from './department-update.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('DepartmentUpdateComponent', () => {
 	let component: DepartmentUpdateComponent;
@@ -9,7 +11,7 @@ describe('DepartmentUpdateComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				declarations: [ DepartmentUpdateComponent ]
+				declarations: [ DepartmentUpdateComponent, TranslateModule.forRoot() ]
 			}).compileComponents();
 		})
 	);

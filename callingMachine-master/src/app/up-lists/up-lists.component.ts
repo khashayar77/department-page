@@ -88,9 +88,9 @@ export class UpListsComponent implements OnInit {
 	// 	this.getList(event.pageIndex, event.pageSize);
 	// }
 
-	// remove(item: UpLists) {
-	// 	this.UpListsService.remove(item.ID).subscribe((res) => {});
-	// 	this.snackbar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
-	// 	return;
-	// }
+	remove(item: UpLists) {
+		this.UpListsService.remove(item.Id).subscribe((res) => {});
+		this.snackbar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
+		return;
+	}
 }
