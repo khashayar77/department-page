@@ -1,9 +1,23 @@
-.my-drop-zone {
-	border: dotted 2px lightgray;
+#file-selector {
+	display: none;
 }
-.nv-file-over {
-	border: dotted 3px red;
+
+h4 {
+	padding: 0 3px;
 }
-.another-file-over-class {
-	border: dotted 3px green;
+
+.card {
+	padding: 50px;
+	background-image: linear-gradient(#568ff5, #669dff);
+}
+
+.main {
+	margin-top: 110px;
+	margin-right: 150px;
+}
+
+.card h4 {
+	margin-bottom: 150px;
+	font-size: 15px;
+	font-weight: bold;
 }

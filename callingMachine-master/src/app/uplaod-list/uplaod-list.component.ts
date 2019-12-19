@@ -3,32 +3,8 @@ import { FileUploader, FileItem } from 'ng2-file-upload';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { stringify } from 'querystring';
-
-function readBase64(file): Promise<any> {
-	const reader = new FileReader();
-	const future = new Promise((resolve, reject) => {
-		reader.addEventListener(
-			'load',
-			() => {
-				resolve(reader.result);
-			},
-			false
-		);
-
-		reader.addEventListener(
-			'error',
-			(event) => {
-				reject(event);
-			},
-			false
-		);
-
-		reader.readAsDataURL(file);
-	});
-	return future;
-}
-
-const URL = 'http://localhost:4000/api/upload';
+import { UploaderService } from '../services/uploader.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
 	selector: 'app-uplaod-list',
@@ -36,40 +12,65 @@ const URL = 'http://localhost:4000/api/upload';
 	styleUrls: [ './uplaod-list.component.scss' ]
 })
 export class UplaodListComponent {
-	public uploader: FileUploader = new FileUploader({
-		url: URL,
-		disableMultipart: true
-	});
-	public hasBaseDropZoneOver = false;
-	public hasAnotherDropZoneOver = false;
+	selectedFile: File = null;
+	fd = new FormData();
+	progress$ = new BehaviorSubject<number>(0);
+	// tslint:disable-next-line: variable-name
+	progress_color: 'primary' | 'warn' = 'primary';
+	uploading: boolean;
+	statics: {
+		DepartmentName: string;
+		FailedNumber: number;
+		SuccessNumber: number;
+	};
 
-	fileObject: any;
-
-	public fileOverBase(e: any): void {
-		this.hasBaseDropZoneOver = e;
+	constructor(private snackbar: MatSnackBar, private uploaderService: UploaderService) {
+		this.fd.append('file', '');
+		this.uploading = false;
 	}
 
-	public fileOverAnother(e: any): void {
-		this.hasAnotherDropZoneOver = e;
+	createFormData(event) {
+		debugger;
+		this.selectedFile = event.target.files[0] as File;
+		this.fd.delete('file');
+		this.fd.append('file', this.selectedFile, this.selectedFile.name);
+
+		const reader = new FileReader();
+		reader.onload = (e: any) => {};
+		reader.readAsDataURL(this.selectedFile);
+		this.upload(this.fd);
 	}
 
-	public onFileSelected(event: EventEmitter<File[]>) {
-		const file: File = event[0];
-
-		console.log(file);
-
-		readBase64(file)
-			// tslint:disable-next-line: only-arrow-functions
-			.then((data) => {
-				console.log(data);
-			});
+	open_file_selector() {
+		(document.querySelector('#file-selector') as HTMLInputElement).click();
 	}
 
-	uploadAll() {
-		if (this.uploader.progress) {
-			alert('فایل با موفقیت آپلود شد');
-		}
+	upload(fd) {
+		this.uploading = true;
+		this.progress_color = 'primary';
+		this.uploaderService.upload(fd).subscribe((uploader) => {
+			if (uploader.status === 'done') {
+				this.progress_color = 'primary';
+				debugger;
+				this.statics = uploader.body;
+				this.progress$.next(uploader.progress);
+				this.uploading = false;
+			} else if (uploader.status === 'progress') {
+				this.progress_color = 'primary';
+				this.progress$.next(uploader.progress);
+			} else if (uploader.status === 'failed') {
+				this.progress_color = 'warn';
+				this.progress$.next(uploader.progress);
+			} else {
+				debugger;
+			}
+			// this.uploadResponse.message = image.message;
+
+			// this.sb.open('رسانه با موفقیت آپلود شد', null, { duration: 4999 });
+			// if (image.verified) this.medias.push(image);
+			// else this.verification_needed_medias.push(image);
+		});
 	}
 
-	constructor(private snackbar: MatSnackBar) {}
+	uploader() {}
 }

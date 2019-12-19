@@ -50,7 +50,8 @@ describe('CallingListsComponent', () => {
 					MatCardModule,
 					MatIconModule,
 					MatTooltipModule,
-					MatBottomSheetModule
+					MatBottomSheetModule,
+					MatOptionModule
 				],
 				declarations: [ CallingListsComponent ]
 			}).compileComponents();

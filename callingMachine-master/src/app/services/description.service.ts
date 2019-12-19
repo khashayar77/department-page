@@ -18,15 +18,15 @@ export class Descriptionservice {
 	description: { [key: string]: string } = {
 		RetryTime: 'مدت زمان وقفه برای تماس مجدد',
 		info: 'کارشناسی که با مشترک صحبت کرده است',
-		Priority: 'اولویت',
+		Priority: 'اولویت برقراری تماس',
 		Name: 'نام ',
 		Unit: 'واحد سازمانی',
 		StartWorkingTime: 'زمان شروع تماس با مشترکین',
 		EndWorkingTime: 'زمان پایان تماس با مشترکین',
 		Queue: 'نام صف',
 		QueryMethod: 'شماره استراتژی برقراری تماس با مشترکین',
-		CallMore: 'تعداد دفعات مجاز برای تماس مجدد',
-		action: 'مشاهده جزییات',
+		CallMore: 'تعداد دفعات تماس',
+		action: 'نمایش جزئیات',
 		ListID: 'کد لیست',
 		AllRecords: 'اطلاعات تمام رکورد ها',
 		SuccessRecords: 'تماس های موفقیت آمیز',
@@ -58,6 +58,13 @@ export class Descriptionservice {
 		info3: 'وضعیت ثبت در سامانه crm',
 		NoneWorkingDayTableId: 'شناسه روز های غیرکاری',
 		UrlId: 'شناسه مخزن آپلود تماس ها',
-		delete: 'حذف'
+		delete: 'حذف',
+		ListNumberId: 'شناسه لیست آپلود شده ',
+		namberofcall: 'تعداد تماس های انجام شده وبی پاسخ',
+		NumberOfFailedCalls: 'تعداد تماس های امروز',
+		YesterdayNumberOfCalls: 'تعداد تماس های دیروز',
+		departmentName: 'اسم دپارتمان',
+		SuccessfullCall: 'تماس های انجام شده',
+		FaildCalledCount: 'تماس های بی پاسخ'
 	};
 }

@@ -12,6 +12,7 @@ import { MatTooltipModule, MatPaginatorModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatSliderModule, DateAdapter } from '@angular/material';
+import { ChartsModule } from 'ng2-charts';
 import { MaterialModule } from './material/material.module';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -31,10 +32,12 @@ import { AddDepartmentsComponent } from './add-departments/add-departments.compo
 import { UpListsComponent } from './up-lists/up-lists.component';
 import { MySheetUplistsComponent } from './components/my-sheet-uplists/my-sheet-uplists.component';
 import { MySheetCallingListComponent } from './components/my-sheet-calling-list/my-sheet-calling-list.component';
+import { CallResultPipe } from './pipes/call-result.pipe';
 /**
  * guards
  */
 import { LogedInGuard } from './guards/loged-in.guard';
+
 /**
  * interceptors
  */
@@ -68,7 +71,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 		AddDepartmentsComponent,
 		UpListsComponent,
 		MySheetUplistsComponent,
-		MySheetCallingListComponent
+		MySheetCallingListComponent,
+		CallResultPipe
 	],
 	imports: [
 		BrowserModule,
@@ -87,6 +91,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 		MatExpansionModule,
 		MatBottomSheetModule,
 		MatButtonToggleModule,
+		ChartsModule,
 
 		TranslateModule.forRoot({
 			loader: {

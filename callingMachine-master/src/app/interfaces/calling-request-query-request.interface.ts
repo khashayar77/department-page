@@ -1,10 +1,10 @@
 export interface CallingRequestQueryRequest {
 	criteria: {
-		CustomerId?: number;
-		Number?: number;
+		Number?: string;
+		CustomerId?: string;
 		Department?: string;
-		addDate?: Date;
-		callStatus?: number;
+		NumbersList?: string;
+		CallStatus?: string;
 	};
 	sortBy?: string;
 	pageNo: number;

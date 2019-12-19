@@ -12,13 +12,7 @@ describe('MySheetCallingListComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				declarations: [
-					MySheetCallingListComponent,
-					ReactiveFormsModule,
-					MatCardModule,
-					ReactiveFormsModule,
-					MatFormFieldModule
-				]
+				declarations: [ MySheetCallingListComponent, ReactiveFormsModule, MatCardModule, MatFormFieldModule ]
 			}).compileComponents();
 		})
 	);

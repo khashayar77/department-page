@@ -35,7 +35,7 @@ export class UpListsComponent implements OnInit {
 		private buttomSheet: MatBottomSheet
 	) {
 		this.descriptions = this.descriptionservice.description;
-		this.displayedColumns = [ 'Description', 'Id', 'Name', 'OperatorName', 'actions' ];
+		this.displayedColumns = [ 'Id', 'Name', 'OperatorName', 'Description', 'actions' ];
 
 		this.getList();
 

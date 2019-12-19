@@ -257,10 +257,10 @@
             <td
               mat-cell
               *matCellDef="let element"
-              [matTooltip]="descriptions.action"
+              [matTooltip]="descriptions.actions"
             >
               <button mat-icon-button (click)="openBottomSheet(element)">
-                <mat-icon>remove_red_eye</mat-icon>
+                <mat-icon>{{ "icon.edit" | translate }}</mat-icon>
               </button>
             </td>
           </ng-container>

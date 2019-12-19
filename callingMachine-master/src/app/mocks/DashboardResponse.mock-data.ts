@@ -1,8 +1,16 @@
 export const DashboardResponse = {
-	Result: [
+	TodayNumberOfCalls: [
 		{
-			NumberOfCalls: '454',
-			NumberOfFailedCalls: '12'
+			departmentName: 'qm',
+			FaildCalledCount: '32',
+			SuccessfullCall: '445'
+		}
+	],
+	YesterdayNumberOfCalls: [
+		{
+			departmentName: 'qm',
+			FaildCalledCount: '32',
+			SuccessfullCall: '445'
 		}
 	]
 };

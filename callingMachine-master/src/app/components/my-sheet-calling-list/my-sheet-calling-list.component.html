@@ -1,215 +1,73 @@
 <div fxLayout="column" fxLayoutGap="25px">
-  <h4 fxFlex>
-    ویرایش لیست تماس ها
-    <b>
-      <!-- {{ formGroup.get("department").value }} -->
-    </b>
-  </h4>
+  <div fxFlex fxLayout="column" fxLayoutGap="25px">
+    <h4 fxFlex id="toolbar">
+      {{ "show detail call resualt of ID" | translate }}
+      <b>
+        {{ callResult?.CustomerId }}
+      </b>
+    </h4>
 
-  <div fxFlex>
-    <form [formGroup]="formGroup">
-      <div fxLayout="column">
-        <div fxLayout="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="کد اشتراک"
-                formControlName="customerID"
-                min="1"
-                max="10"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="uniqeID"
-                formControlName="uniqeID"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxLayout="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="جنس تماس"
-                formControlName="qID"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="شماره تلفن"
-                formControlName="Number"
-                [max]="12"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxLayout="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="دپارتمان"
-                formControlName="Department"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="تاریخ آپلود شماره"
-                formControlName="Add_Date"
-                [matDatepicker]="picker"
-              />
-              <mat-datepicker-toggle matSuffix [for]="picker">
-                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-              </mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxLayout="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="URL ID"
-                formControlName="UrlId"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="time"
-                matInput
-                placeholder="ساعت تماس مجدد"
-                formControlName="Retry_Time"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxLayout="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="number"
-                matInput
-                placeholder="Lock_call"
-                formControlName="Lock_call"
-                min="1"
-                max="30"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="number"
-                matInput
-                placeholder="Attempt"
-                formControlName="Attempt"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxLayout="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="number"
-                matInput
-                placeholder="وضغیت تماس"
-                formControlName="Call_Status"
-                min="1"
-                max="2"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="time"
-                matInput
-                placeholder="مدت زمان مکالمه"
-                formControlName="CallDurationLimit"
-                min="1"
-                max="30"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-
-        <div fxLayout="row" fxLayoutGap="15px">
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="text"
-                matInput
-                placeholder="کاربر"
-                formControlName="Info1"
-                min="1"
-                max="30"
-              />
-            </mat-form-field>
-          </div>
-
-          <div fxFlex="50">
-            <mat-form-field>
-              <input
-                type="string"
-                matInput
-                placeholder="وضعیت آپلود crm"
-                formControlName="Info3"
-                min="1"
-                max="30"
-              />
-            </mat-form-field>
-          </div>
-        </div>
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div fxFlex="200px" class="label">{{ "CustomerId" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.CustomerId }}</div>
+        <div fxFlex="200px" class="label">{{ "PhoneNumber" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.PhoneNumber }}</div>
       </div>
-    </form>
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div fxFlex="200px" class="label">
+          {{ "DepartmentName" | translate }}:
+        </div>
+        <div fxFlex class="value">{{ callResult?.DepartmentName }}</div>
+        <div fxFlex="200px" class="label">{{ "UrlId" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.UrlId }}</div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div fxFlex="200px" class="label">{{ "AddDate" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.AddDate }}</div>
+        <div fxFlex="200px" class="label">
+          {{ "LastAttemptDate" | translate }}:
+        </div>
+        <div fxFlex class="value">{{ callResult?.LastAttemptDate }}</div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div fxFlex="200px" class="label">{{ "RetryTime" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.RetryTime }}</div>
+        <div fxFlex="200px" class="label">{{ "LockCall" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.LockCall }}</div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div fxFlex="200px" class="label">{{ "Attempt" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.Attempt }}</div>
+        <div fxFlex="200px" class="label">{{ "CallStatus" | translate }}:</div>
+        <div fxFlex>{{ callResult?.CallStatus | callResult }}</div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div fxFlex="200px" class="label">
+          {{ "CallDuration" | translate }}:
+        </div>
+        <div fxFlex class="value">{{ callResult?.CallDuration }}</div>
+        <div fxFlex="200px" class="label">{{ "Info1" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.Info1 }}</div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center">
+        <div fxFlex="200px" class="label">{{ "info2" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.info2 }}</div>
+        <div fxFlex="200px" class="label">{{ "info3" | translate }}:</div>
+        <div fxFlex class="value">{{ callResult?.info3 }}</div>
+      </div>
+    </div>
   </div>
-  <div fxFlex fxLayout="row">
-    <button fxFlex type="button" (click)="cancel()" mat-raised-button>
-      {{ "cancel" | translate }}
-    </button>
 
+  <div fxFlex fxLayout="row" fxLayoutAlign="center end">
     <button
-      fxFlex
+      fxFlex="grow"
       type="button"
-      (click)="edit()"
-      mat-raised-button
+      (click)="cancel()"
+      mat-button
       color="primary"
     >
-      {{ "save" | translate }}
+      {{ "cancel" | translate }}
     </button>
   </div>
 </div>

@@ -109,141 +109,6 @@
             </td>
           </ng-container>
 
-          <!-- <ng-container matColumnDef="AllRecords">
-            <th
-              mat-header-cell
-              [matTooltip]="descriptions.AllRecords"
-              *matHeaderCellDef
-            >
-              {{ "AllRecords" | translate }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              [matTooltip]="descriptions.AllRecords"
-            >
-              {{ element.AllRecords }}
-            </td>
-          </ng-container> -->
-
-          <!-- <ng-container matColumnDef="add_date">
-            <th
-              mat-header-cell
-              [matTooltip]="descriptions.add_date"
-              *matHeaderCellDef
-            >
-              {{ "Add_Date" | translate }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              [matTooltip]="descriptions.add_date"
-            >
-              {{ element.add_date }}
-            </td>
-          </ng-container>  -->
-
-          <!-- <ng-container matColumnDef="Last_attempt_date">
-            <th
-              mat-header-cell
-              [matTooltip]="descriptions.Last_attempt_date"
-              *matHeaderCellDef
-            >
-              {{ "Last_attempt_date" | translate }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              [matTooltip]="descriptions.Last_attempt_date"
-            >
-              {{ element.Last_attempt_date }}
-            </td>
-          </ng-container> -->
-          <!--
-          <ng-container matColumnDef="Date">
-            <th
-              mat-header-cell
-              [matTooltip]="descriptions.Date"
-              *matHeaderCellDef
-            >
-              {{ "Date" | translate }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              [matTooltip]="descriptions.Date"
-            >
-              {{ element.Date }}
-            </td>
-          </ng-container> -->
-
-          <!-- <ng-container matColumnDef="lock_call">
-            <th
-              mat-header-cell
-              [matTooltip]="descriptions.lock_call"
-              *matHeaderCellDef
-            >
-              {{ "lock_call" | translate }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              [matTooltip]="descriptions.lock_call"
-            >
-              {{ element.lock_call }}
-            </td>
-          </ng-container> -->
-
-          <!-- <ng-container matColumnDef="call_status">
-            <th
-              mat-header-cell
-              [matTooltip]="descriptions.call_status"
-              *matHeaderCellDef
-            >
-              {{ "Call_Status" | translate }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              [matTooltip]="descriptions.call_status"
-            >
-              {{ element.call_status }}
-            </td>
-          </ng-container> -->
-
-          <!-- <ng-container matColumnDef="CallDurationLimit">
-            <th
-              mat-header-cell
-              [matTooltip]="descriptions.CallDurationLimit"
-              *matHeaderCellDef
-            >
-              {{ "CallDurationLimit" | translate }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              [matTooltip]="descriptions.CallDurationLimit"
-            >
-              {{ element.CallDurationLimit }}
-            </td>
-          </ng-container> -->
-
-          <!-- <ng-container matColumnDef="info">
-            <th
-              mat-header-cell
-              [matTooltip]="descriptions.info"
-              *matHeaderCellDef
-            >
-              {{ "info" | translate }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              [matTooltip]="descriptions.info"
-            >
-              {{ element.info }}
-            </td>
-          </ng-container> -->
 
           <ng-container matColumnDef="actions">
             <th
@@ -263,14 +128,14 @@
                 <mat-icon>delete</mat-icon>
               </button>
 
-              <button
+              <!-- <button
                 mat-icon-button
                 aria-label="exmaple icon-button with a get_app icon"
                 [matTooltip]="'Details' | translate"
                 (click)="openBottomSheet(element)"
               >
                 <mat-icon>remove_red_eye</mat-icon>
-              </button>
+              </button> -->
             </td>
           </ng-container>
 
@@ -278,12 +143,12 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
 
-        <!-- <mat-paginator
+        <mat-paginator
           [pageSizeOptions]="[10, 25, 100]"
           [length]="Total"
           [pageIndex]="PageNo"
           [pageSize]="1"
-        ></mat-paginator> -->
+        ></mat-paginator>
       </mat-card-content>
     </mat-card>
   </div>

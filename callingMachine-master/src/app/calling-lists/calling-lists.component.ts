@@ -9,104 +9,104 @@ import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-shee
 import { MySheetCallingListComponent } from '../components/my-sheet-calling-list/my-sheet-calling-list.component';
 import { Department } from '../interfaces/department.interface';
 import { Observable } from 'rxjs';
-import { DepartmentService, UplistsService } from '../services';
+import { DepartmentService, UplistsService, Descriptionservice } from '../services';
+import { CallResult } from '../interfaces/CallResult';
 import { UpLists } from '../interfaces/UpLists';
 
+
 export interface Num {
-	value: string;
-	viewValue: string;
+  value: string;
+  viewValue: string;
 }
 @Component({
-	selector: 'app-calling-lists',
-	templateUrl: './calling-lists.component.html',
-	styleUrls: [ './calling-lists.component.scss' ]
+  selector: 'app-calling-lists',
+  templateUrl: './calling-lists.component.html',
+  styleUrls: ['./calling-lists.component.scss']
 })
 export class CallingListsComponent {
-	callStatusList: number[] = [ 1, 2 ];
-	departmets$: Observable<Department[]>;
-	uploads_list$: Observable<UpLists[]>;
-	current_page: number;
-	total: number;
+  callStatusList: number[] = [0, 1];
+  departmets$: Observable<Department[]>;
+  uploads_list$: Observable<UpLists[]>;
+  current_page: number;
+  total: number;
 
-	displayedColumns: string[];
-	// @ViewChild(MatPaginator, { static: true })
-	// paginator: MatPaginator;
-	dataSource = new MatTableDataSource<CallRequest>([]);
-	// pageNo: number;
+  displayedColumns: string[];
+  // @ViewChild(MatPaginator, { static: true })
+  // paginator: MatPaginator;
+  dataSource = new MatTableDataSource<CallRequest>([]);
+  // pageNo: number;
+  // Total: number;
 
-	constructor(
-		private callingService: CallingService,
-		private departmentService: DepartmentService,
-		private uplistsService: UplistsService,
-		private matSnackBar: MatSnackBar,
-		private bottomSheet: MatBottomSheet
-	) {
-		this.departmets$ = this.departmentService.list();
-		this.uploads_list$ = this.uplistsService.list();
-		this.displayedColumns = [
-			'CustomerId',
-			'PhoneNumber',
-			'DepartmentName',
-			'UrlId',
-			'AddDate',
-			'LastAttemptDate',
-			'RetryTime',
-			'LockCall',
-			'Attempt',
-			'CallStatus',
-			'CallDuration',
-			'Info1',
-			'info2',
-			'info3',
-			'action'
-		];
-		this.current_page = 0;
-		this.search();
-	}
-	filterForm = new FormGroup({
-		Number: new FormControl(),
-		CustomerId: new FormControl(),
-		Department: new FormControl(),
-		NumbersList: new FormControl(),
-		CallStatus: new FormControl()
-	});
+  descriptions: { [key: string]: string };
 
-	openBottomSheet(callRequest: CallRequest) {
-		this.bottomSheet.open(MySheetCallingListComponent, {
-			data: {
-				callRequest
-			}
-		});
-	}
+  constructor(
+    private callingService: CallingService,
+    private departmentService: DepartmentService,
+    private uplistsService: UplistsService,
+    private matSnackBar: MatSnackBar,
+    private bottomSheet: MatBottomSheet,
+    private descriptionservice: Descriptionservice
+  ) {
+    this.departmets$ = this.departmentService.list();
+    this.uploads_list$ = this.uplistsService.list();
+    this.descriptions = this.descriptionservice.description;
+    this.displayedColumns = ['CustomerId', 'PhoneNumber', 'ListNumberId', 'UrlId', 'action'];
+    this.current_page = 0;
+    this.search();
 
-	// pageChanged(event: PageEvent) {
-	// 	this.getList(event.pageIndex, event.pageSize);
-	// }
+  }
+  filterForm = new FormGroup({
+    Number: new FormControl(null),
+    CustomerId: new FormControl(null),
+    Department: new FormControl(null),
+    NumbersList: new FormControl(null),
+    CallStatus: new FormControl(null)
+  });
 
-	remove(item: CallRequest) {
-		this.callingService.remove(item.Id).subscribe((res) => {
-			this.matSnackBar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
-			this.search();
-		});
-	}
 
-	search() {
-		debugger;
-		this.callingService
-			.query({
-				criteria: this.filterForm.value,
-				pageNo: this.current_page
-			})
-			.subscribe((res) => {
-				debugger;
-				// TODO:
-				this.dataSource.data = res;
-				this.current_page = 1;
-				this.total = 100;
-			});
-	}
-	// page_change(e: PageEvent) {
-	//   e.
-	//   this.search({ page_no: ++this.current_page });
-	// }
+  openBottomSheet(PhoneNumber: string) {
+    const bs_ref = this.bottomSheet.open(MySheetCallingListComponent, {
+      data: {
+        PhoneNumber
+      }
+    });
+
+    // this.getList();
+  }
+
+  // pageChanged(event: PageEvent) {
+  // 	this.getList(event.pageIndex, event.pageSize);
+  // }
+
+
+
+  remove(item: CallRequest) {
+    this.callingService.remove(item.Id).subscribe((res) => {
+      this.matSnackBar.open('رکورد مورد نظر حذف شد', null, { duration: 999 });
+      this.search();
+    });
+  }
+
+
+
+  // ngOnInit() {
+  //   this.dataSource.paginator = this.paginator;
+  // }
+
+
+
+
+
+  search() {
+    this.callingService
+      .query({
+        criteria: this.filterForm.value,
+        pageNo: this.current_page
+      })
+      .subscribe((res) => {
+        this.dataSource.data = res;
+        this.current_page = 1;
+        this.total = 100;
+      });
+  }
 }

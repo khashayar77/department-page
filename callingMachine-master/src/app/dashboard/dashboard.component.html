@@ -1,81 +1,27 @@
-<div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="15px">
-  <div fxFlex="500px">
-    <mat-card color="primary">
-      <mat-card-content>
-        <div fxLayout="column">
-          <div fxLayout="row" fxLayoutAlign="end">
-            <mat-icon [matTooltip]="'report' | translate">note</mat-icon>
-          </div>
-          <div fxFlex="row" fxLayoutAlign="center">
-            <mat-card-header>{{ "Report" | translate }}</mat-card-header>
-          </div>
-          <br />
-          <div fxFlex="row" fxLayoutAlign="center">
-            <h4 class="B">448</h4>
-          </div>
-
-          <form fxFlex="50px" fxFlexAlign="center center"></form>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-  <div fxFlex="500px">
-    <mat-card color="primary">
-      <mat-card-title fxLayout="row" fxLayoutAlign="center center">
-        {{ "Null calls" | translate }}
-      </mat-card-title>
-      <mat-card-content>
-        <mat-list>
-          <mat-divider></mat-divider>
-
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-list-item>qm-cancel</mat-list-item>
-            <h4 class="X">448</h4>
-            <br />
-          </div>
-          <mat-divider></mat-divider>
-
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-list-item>qm-Changeline</mat-list-item>
-            <h4 class="X">338</h4>
-            <br />
-          </div>
-          <mat-divider></mat-divider>
-
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-list-item>qm-delivery</mat-list-item>
-            <h4 class="X">778</h4>
-            <br />
-          </div>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
-  <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="15px">
-    <div fxFlex="500px">
-      <mat-card color="primary">
-        <mat-card-content>
-          <div fxLayout="column">
-            <div fxLayout="row" fxLayoutAlign="end start">
-              <mat-icon [matTooltip]="'Call Result' | translate">
-                settings_voice</mat-icon
-              >
-            </div>
-            <div fxFlex="row" fxLayoutAlign="center">
-              <mat-card-header>{{ "Call Result" | translate }}</mat-card-header>
-            </div>
-
-            <br />
-            <div fxFlex="row" fxLayoutAlign="center">
-              <h4 class="B">448</h4>
-            </div>
-
-            <form fxFlex="50px" fxFlexAlign="center center"></form>
-          </div>
-        </mat-card-content>
-      </mat-card>
+<div fxLayoutGap="25px" fxLayoutAlign="start stretch">
+  <mat-card id="totalCallsContainer" fxFlex="200px" fxLayout="column" fxLayoutAlign="center center">
+    <div fxFlex="nogrow" id="totalCalls">
+      {{statics?.TotalCalls}}
     </div>
-  </div>
+    <div fxFlex="nogrow"  id="title">
+      {{ "RemainNumberOfCalls" | translate }}
+    </div>
+  </mat-card>
+
+  <mat-card id="CallsReportPerDepartment" fxFlex>
+    <h5>
+      {{ "CallsReportPerDepartment" | translate }}
+    </h5>
+    <div *ngIf="loaded">
+        <canvas
+        height="300"
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
+        ></canvas>
+      </div>
+  </mat-card>
 </div>

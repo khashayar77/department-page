@@ -6,35 +6,35 @@ import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class UplistsService {
-	// update(id: string, value: any) {
-	// 	throw new Error('Method not implemented.');
-	// }
-	// get(id: any) {
-	// 	throw new Error('Method not implemented.');
-	// }
+  // update(id: string, value: any) {
+  // 	throw new Error('Method not implemented.');
+  // }
+  // get(id: any) {
+  // 	throw new Error('Method not implemented.');
+  // }
 
-	constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-	get(id: string): Observable<UpLists> {
-		return this.http
-			.get<{ Result: UpLists }>(`${environment.server_ip}/NumbersLists/${id}`)
-			.pipe(map((i) => i.Result));
-	}
+  get(id: string): Observable<UpLists> {
+    return this.http
+      .get<{ Result: UpLists }>(`${environment.server_ip}/NumbersLists/${id}`)
+      .pipe(map((i) => i.Result));
+  }
 
-	update(id: string, model: Partial<UpLists>): Observable<UpLists> {
-		return this.http
-			.patch<{ Result: UpLists }>(`${environment.server_ip}/NumbersList/${id}`, model)
-			.pipe(map((i) => i.Result));
-	}
+  update(id: string, model: Partial<UpLists>): Observable<UpLists> {
+    return this.http
+      .patch<{ Result: UpLists }>(`${environment.server_ip}/NumbersList/${id}`, model)
+      .pipe(map((i) => i.Result));
+  }
 
-	list() {
-		return this.http.get<UpLists[]>(`${environment.server_ip}/NumbersLists`, {});
-	}
+  list() {
+    return this.http.get<UpLists[]>(`${environment.server_ip}/NumbersLists`, {});
+  }
 
-	remove(UpListsID: string): Observable<void> {
-		return this.http.delete<void>(`${environment.server_ip}/NumbersList/${UpListsID}`);
-	}
+  remove(UpListsID: string): Observable<void> {
+    return this.http.delete<void>(`${environment.server_ip}/NumbersList/${UpListsID}`);
+  }
 }

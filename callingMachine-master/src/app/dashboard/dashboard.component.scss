@@ -1,16 +1,30 @@
-mat-card-header {
-	font-size: 18px;
+#totalCallsContainer {
+	background-image: linear-gradient(#568ff5, #669dff);
+	color: #253033;
+	font-weight: bolder;
+
+	#title {
+		text-align: center;
+		font-size: 22px;
+	}
+	#totalCalls {
+		text-align: center;
+		font-size: 65px;
+		padding: 25px 0;
+		font-weight: bolder;
+	}
 }
 
-.X {
-	padding: 5px;
-	font-size: medium;
+body {
+	font-family: "IRAN Sans Bold";
 }
 
-.mat-icon {
-	font-size: 30px;
-}
-
-.B {
-	font-size: 20px;
-}
+// @font-face {
+// 	font-family: "IRAN Sans Bold";
+// 	src: url("766132c828a90cbecf6f7f4027d12725.eot");
+// 	src: url("766132c828a90cbecf6f7f4027d12725.eot?#iefix") format("embedded-opentype"),
+// 		url("766132c828a90cbecf6f7f4027d12725.woff2") format("woff2"),
+// 		url("766132c828a90cbecf6f7f4027d12725.woff") format("woff"),
+// 		url("766132c828a90cbecf6f7f4027d12725.ttf") format("truetype"),
+// 		url("766132c828a90cbecf6f7f4027d12725.svg#IRAN Sans Bold") format("svg");
+// }

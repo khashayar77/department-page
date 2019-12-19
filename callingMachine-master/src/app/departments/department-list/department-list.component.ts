@@ -10,7 +10,7 @@ import { Descriptionservice } from 'src/app/services/description.service';
 @Component({
 	selector: 'department-list',
 	templateUrl: './department-list.component.html',
-	styleUrls: ['./department-list.component.scss']
+	styleUrls: [ './department-list.component.scss' ]
 })
 export class DepartmentListComponent implements OnInit {
 	dataSource = new MatTableDataSource();
@@ -52,8 +52,7 @@ export class DepartmentListComponent implements OnInit {
 		});
 	}
 
-	ngOnInit() {
-	}
+	ngOnInit() {}
 
 	openBottomSheet(department: Department) {
 		const bs_ref = this.buttomSheet.open(DepartmentUpdateComponent, {
@@ -61,8 +60,8 @@ export class DepartmentListComponent implements OnInit {
 				department
 			}
 		});
-		bs_ref.afterDismissed().subscribe(department => {
+		bs_ref.afterDismissed().subscribe((department) => {
 			this.getList();
-		})
+		});
 	}
 }

@@ -27,7 +27,10 @@
             <mat-form-field>
               <mat-label>{{ "status" | translate }}</mat-label>
               <mat-select formControlName="Enable">
-                <mat-option *ngFor="let item of enability_options" [value]="item">
+                <mat-option
+                  *ngFor="let item of enability_options"
+                  [value]="item"
+                >
                   {{ item | activationStatus }}
                 </mat-option>
               </mat-select>
@@ -35,7 +38,13 @@
           </div>
           <div fxFlex="50">
             <mat-form-field>
-              <input type="text" matInput [placeholder]="'Priority' | translate" formControlName="Priority" />
+              <mat-label>{{ "Priority" | translate }}</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="1"
+                formControlName="Priority"
+              />
             </mat-form-field>
           </div>
         </div>
@@ -43,14 +52,24 @@
         <div fxFlex="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
-              <input type="text" matInput [placeholder]="'StartWorkingTime' | translate"
-                formControlName="StartWorkingTime" />
+              <mat-label>{{ "StartWorkingTime" | translate }}</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="09:00"
+                formControlName="StartWorkingTime"
+              />
             </mat-form-field>
           </div>
           <div fxFlex="50">
             <mat-form-field>
-              <input type="text" matInput [placeholder]="'EndWorkingTime' | translate"
-                formControlName="EndWorkingTime" />
+              <mat-label>{{ "EndWorkingTime" | translate }}</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="16:00"
+                formControlName="EndWorkingTime"
+              />
             </mat-form-field>
           </div>
         </div>
@@ -58,13 +77,25 @@
         <div fxFlex="row" fxLayoutGap="15px">
           <div fxFlex="50">
             <mat-form-field>
-              <input type="text" matInput [placeholder]="'CallMore' | translate" formControlName="CallMore" />
+              <mat-label>{{ "CallMore" | translate }}</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="7"
+                formControlName="CallMore"
+              />
             </mat-form-field>
           </div>
 
           <div fxFlex="50">
             <mat-form-field>
-              <input type="text" matInput [placeholder]="'RetryTime' | translate" formControlName="RetryTime" />
+              <mat-label>{{ "RetryTime" | translate }}</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="10 ثانیه"
+                formControlName="RetryTime"
+              />
             </mat-form-field>
           </div>
         </div>
@@ -74,16 +105,24 @@
             <mat-form-field>
               <mat-label>{{ "QueryMethod" | translate }}</mat-label>
               <mat-select formControlName="QueryMethod">
-                <mat-option *ngFor="let item of query_methods$ | async" [value]="item.Id">
-                  {{item.FarsiName}}
+                <mat-option
+                  *ngFor="let item of query_methods$ | async"
+                  [value]="item.Id"
+                >
+                  {{ item.FarsiName }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
           <div fxFlex="50">
             <mat-form-field>
-              <input type="text" matInput [placeholder]="'CallDurationLimit' | translate"
-                formControlName="CallDurationLimit" />
+              <mat-label>{{ "CallDurationLimit" | translate }}</mat-label>
+              <input
+                type="text"
+                matInput
+                placeholder="12ثانیه"
+                formControlName="CallDurationLimit"
+              />
             </mat-form-field>
           </div>
         </div>
@@ -94,7 +133,13 @@
     <button fxFlex type="button" (click)="cancel()" mat-button color="primary">
       {{ "cancel" | translate }}
     </button>
-    <button fxFlex type="button" (click)="update()" mat-raised-button color="primary">
+    <button
+      fxFlex
+      type="button"
+      (click)="update()"
+      mat-raised-button
+      color="primary"
+    >
       {{ "save" | translate }}
     </button>
   </div>

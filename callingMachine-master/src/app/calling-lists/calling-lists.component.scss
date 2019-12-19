@@ -1,11 +1,16 @@
 table {
 	width: 100%;
-	td,
-	th {
-		text-align: right;
+	text-align: right;
+	td {
+		font-weight: bold;
 	}
 }
 
-mat-form-field {
-	width: 100%;
+table th {
+	text-align: right;
+}
+
+.cdk-column-action {
+	width: 90px;
+	padding-left: 0 !important;
 }

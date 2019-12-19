@@ -10,6 +10,7 @@ import {
 	MatListModule
 } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('DashboardComponent', () => {
 	let component: DashboardComponent;
@@ -26,7 +27,8 @@ describe('DashboardComponent', () => {
 					TranslateModule.forRoot(),
 					MatTooltipModule,
 					MatDividerModule,
-					MatListModule
+					MatListModule,
+					HttpClientModule
 				],
 				declarations: [ DashboardComponent ]
 			}).compileComponents();

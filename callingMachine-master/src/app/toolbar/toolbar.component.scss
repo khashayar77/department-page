@@ -10,7 +10,7 @@ mat-toolbar {
 	}
 }
 mat-sidenav-content {
-	min-height: calc(100vh - 130px);
+	min-height: calc(100vh - 133px);
 
 	#main-container {
 		padding: 25px;
@@ -19,9 +19,5 @@ mat-sidenav-content {
 footer {
 	background: #333;
 	color: #eee;
-	padding: 23px;
-}
-
-.icon {
-	font-size: 35px;
+	padding: 5px;
 }

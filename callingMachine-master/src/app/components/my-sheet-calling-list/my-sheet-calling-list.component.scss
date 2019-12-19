@@ -1,1 +1,30 @@
+:host {
+	display: block;
+	margin-bottom: 50px;
+}
 
+h4 {
+	background: #3f51b5;
+	color: #fff;
+	padding: 17px 25px 17px 25px;
+	margin-top: 0px;
+}
+
+.label {
+	// margin-left: 5px;
+	padding-bottom: 10px;
+}
+#toolbar {
+	background: #3f51b5;
+	color: #fff;
+	width: calc(100% + 32px);
+	margin-right: -16px;
+	margin-top: -8px;
+	padding: 25px 25px 25px 25px;
+}
+
+.mat-button {
+	background-color: #3f51b5;
+	color: white;
+	top: 50px;
+}

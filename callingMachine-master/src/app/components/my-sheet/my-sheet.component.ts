@@ -11,6 +11,7 @@ export interface Num {
 	value: string;
 	viewValue: string;
 }
+
 @Component({
 	selector: 'app-my-sheet',
 	templateUrl: './my-sheet.component.html',
@@ -67,9 +68,9 @@ export class MySheetComponent implements OnInit {
 			return;
 		}
 
-		this.departmentService.update(this.id, this.formGroup.value).subscribe((resp) => {
-			this.snackbar.open('اطلاعات ثبت شد ', null, { duration: 999 });
-			this.formGroup.patchValue(resp);
-		});
+		// this.departmentService.update(this.id, this.formGroup.value).subscribe((resp) => {
+		// 	this.snackbar.open('اطلاعات ثبت شد ', null, { duration: 999 });
+		// 	this.formGroup.patchValue(resp);
+		// });
 	}
 }
